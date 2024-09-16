@@ -7,23 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A418E8D72C98DD0900E9A2B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E8D62C98DD0900E9A2B9 /* AppDelegate.swift */; };
-		A418E8D92C98DD0900E9A2B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E8D82C98DD0900E9A2B9 /* SceneDelegate.swift */; };
-		A418E8DB2C98DD0900E9A2B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E8DA2C98DD0900E9A2B9 /* ViewController.swift */; };
-		A418E8DE2C98DD0900E9A2B9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A418E8DD2C98DD0900E9A2B9 /* Base */; };
 		A418E8E02C98DD0A00E9A2B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A418E8DF2C98DD0A00E9A2B9 /* Assets.xcassets */; };
 		A418E8E32C98DD0A00E9A2B9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A418E8E22C98DD0A00E9A2B9 /* Base */; };
+		A418E92E2C98DD6300E9A2B9 /* DummyjsonAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E8FD2C98DD6200E9A2B9 /* DummyjsonAPIManager.swift */; };
+		A418E92F2C98DD6300E9A2B9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E8FE2C98DD6200E9A2B9 /* UserDefaultsManager.swift */; };
+		A418E9302C98DD6300E9A2B9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9002C98DD6200E9A2B9 /* Constants.swift */; };
+		A418E9312C98DD6300E9A2B9 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A418E9012C98DD6200E9A2B9 /* loading.json */; };
+		A418E9322C98DD6300E9A2B9 /* LoadingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9032C98DD6200E9A2B9 /* LoadingConfigurator.swift */; };
+		A418E9332C98DD6300E9A2B9 /* LoadingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9042C98DD6200E9A2B9 /* LoadingInteractor.swift */; };
+		A418E9342C98DD6300E9A2B9 /* LoadingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9052C98DD6200E9A2B9 /* LoadingPresenter.swift */; };
+		A418E9352C98DD6300E9A2B9 /* LoadingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9062C98DD6200E9A2B9 /* LoadingRouter.swift */; };
+		A418E9362C98DD6300E9A2B9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9072C98DD6200E9A2B9 /* LoadingViewController.swift */; };
+		A418E9372C98DD6300E9A2B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E90A2C98DD6200E9A2B9 /* AppDelegate.swift */; };
+		A418E93A2C98DD6300E9A2B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E90D2C98DD6200E9A2B9 /* SceneDelegate.swift */; };
+		A418E9592C98DEFF00E9A2B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A418E9582C98DEFF00E9A2B9 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A418E8D32C98DD0900E9A2B9 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A418E8D62C98DD0900E9A2B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A418E8D82C98DD0900E9A2B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A418E8DA2C98DD0900E9A2B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A418E8DD2C98DD0900E9A2B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A418E8DF2C98DD0A00E9A2B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A418E8E22C98DD0A00E9A2B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A418E8E42C98DD0A00E9A2B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A418E8FD2C98DD6200E9A2B9 /* DummyjsonAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyjsonAPIManager.swift; sourceTree = "<group>"; };
+		A418E8FE2C98DD6200E9A2B9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		A418E9002C98DD6200E9A2B9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A418E9012C98DD6200E9A2B9 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		A418E9032C98DD6200E9A2B9 /* LoadingConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingConfigurator.swift; sourceTree = "<group>"; };
+		A418E9042C98DD6200E9A2B9 /* LoadingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingInteractor.swift; sourceTree = "<group>"; };
+		A418E9052C98DD6200E9A2B9 /* LoadingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPresenter.swift; sourceTree = "<group>"; };
+		A418E9062C98DD6200E9A2B9 /* LoadingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingRouter.swift; sourceTree = "<group>"; };
+		A418E9072C98DD6200E9A2B9 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		A418E90A2C98DD6200E9A2B9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A418E90D2C98DD6200E9A2B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A418E9592C98DEFF00E9A2B9 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +72,56 @@
 		A418E8D52C98DD0900E9A2B9 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
-				A418E8D62C98DD0900E9A2B9 /* AppDelegate.swift */,
-				A418E8D82C98DD0900E9A2B9 /* SceneDelegate.swift */,
-				A418E8DA2C98DD0900E9A2B9 /* ViewController.swift */,
-				A418E8DC2C98DD0900E9A2B9 /* Main.storyboard */,
+				A418E90A2C98DD6200E9A2B9 /* AppDelegate.swift */,
+				A418E90D2C98DD6200E9A2B9 /* SceneDelegate.swift */,
+				A418E9022C98DD6200E9A2B9 /* Core */,
+				A418E9092C98DD6200E9A2B9 /* Modules */,
 				A418E8DF2C98DD0A00E9A2B9 /* Assets.xcassets */,
 				A418E8E12C98DD0A00E9A2B9 /* LaunchScreen.storyboard */,
 				A418E8E42C98DD0A00E9A2B9 /* Info.plist */,
 			);
 			path = ToDo;
+			sourceTree = "<group>";
+		};
+		A418E8FF2C98DD6200E9A2B9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A418E8FD2C98DD6200E9A2B9 /* DummyjsonAPIManager.swift */,
+				A418E8FE2C98DD6200E9A2B9 /* UserDefaultsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A418E9022C98DD6200E9A2B9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A418E8FF2C98DD6200E9A2B9 /* Managers */,
+				A418E9002C98DD6200E9A2B9 /* Constants.swift */,
+				A418E9012C98DD6200E9A2B9 /* loading.json */,
+			);
+			name = Core;
+			path = ToDoList/Core;
+			sourceTree = "<group>";
+		};
+		A418E9082C98DD6200E9A2B9 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				A418E9072C98DD6200E9A2B9 /* LoadingViewController.swift */,
+				A418E9042C98DD6200E9A2B9 /* LoadingInteractor.swift */,
+				A418E9052C98DD6200E9A2B9 /* LoadingPresenter.swift */,
+				A418E9062C98DD6200E9A2B9 /* LoadingRouter.swift */,
+				A418E9032C98DD6200E9A2B9 /* LoadingConfigurator.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		A418E9092C98DD6200E9A2B9 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A418E9082C98DD6200E9A2B9 /* Loading */,
+			);
+			name = Modules;
+			path = ToDoList/Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +140,9 @@
 			dependencies = (
 			);
 			name = ToDo;
+			packageProductDependencies = (
+				A418E9582C98DEFF00E9A2B9 /* Lottie */,
+			);
 			productName = ToDo;
 			productReference = A418E8D32C98DD0900E9A2B9 /* ToDo.app */;
 			productType = "com.apple.product-type.application";
@@ -99,6 +159,7 @@
 				TargetAttributes = {
 					A418E8D22C98DD0900E9A2B9 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -111,6 +172,9 @@
 				Base,
 			);
 			mainGroup = A418E8CA2C98DD0900E9A2B9;
+			packageReferences = (
+				A418E9572C98DEFF00E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = A418E8D42C98DD0900E9A2B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +189,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A418E9312C98DD6300E9A2B9 /* loading.json in Resources */,
 				A418E8E02C98DD0A00E9A2B9 /* Assets.xcassets in Resources */,
 				A418E8E32C98DD0A00E9A2B9 /* Base in Resources */,
-				A418E8DE2C98DD0900E9A2B9 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +202,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A418E8DB2C98DD0900E9A2B9 /* ViewController.swift in Sources */,
-				A418E8D72C98DD0900E9A2B9 /* AppDelegate.swift in Sources */,
-				A418E8D92C98DD0900E9A2B9 /* SceneDelegate.swift in Sources */,
+				A418E9302C98DD6300E9A2B9 /* Constants.swift in Sources */,
+				A418E92E2C98DD6300E9A2B9 /* DummyjsonAPIManager.swift in Sources */,
+				A418E9362C98DD6300E9A2B9 /* LoadingViewController.swift in Sources */,
+				A418E9322C98DD6300E9A2B9 /* LoadingConfigurator.swift in Sources */,
+				A418E92F2C98DD6300E9A2B9 /* UserDefaultsManager.swift in Sources */,
+				A418E9342C98DD6300E9A2B9 /* LoadingPresenter.swift in Sources */,
+				A418E93A2C98DD6300E9A2B9 /* SceneDelegate.swift in Sources */,
+				A418E9352C98DD6300E9A2B9 /* LoadingRouter.swift in Sources */,
+				A418E9372C98DD6300E9A2B9 /* AppDelegate.swift in Sources */,
+				A418E9332C98DD6300E9A2B9 /* LoadingInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A418E8DC2C98DD0900E9A2B9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A418E8DD2C98DD0900E9A2B9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A418E8E12C98DD0A00E9A2B9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -218,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -290,15 +353,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83A3HB7D55;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,9 +372,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,15 +388,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83A3HB7D55;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,9 +407,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -361,6 +439,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A418E9572C98DEFF00E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A418E9582C98DEFF00E9A2B9 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A418E9572C98DEFF00E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A418E8CB2C98DD0900E9A2B9 /* Project object */;
 }
