@@ -32,25 +32,19 @@ class LoadingViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        setupAnimationView()
-        animationView.play()
+        setUp()
+        presenter.viewDidLoad()
     }
 }
 
+// MARK: - SetUp
 extension LoadingViewController {
     private func setUp() {
-        
-    }
-}
-
-// MARK: - LoadingViewProtocol extension
-extension LoadingViewController: LoadingViewProtocol {
-    func stopAnimation(completion: @escaping () -> Void) {
-        <#code#>
+        setUpBackground()
+        setUpAnimation()
     }
     
-    func setupAnimationView() {
+    private func setUpAnimation() {
         animationView.frame = CGRect(x: 0,
                                      y: 0,
                                      width: 350,
@@ -58,9 +52,24 @@ extension LoadingViewController: LoadingViewProtocol {
         animationView.center = view.center
         animationView.loopMode = .loop
         view.addSubview(animationView)
+        animationView.play()
     }
     
-    func startAnimation() {
-        
+    private func setUpBackground() {
+        view.backgroundColor = .white
+    }
+}
+
+// MARK: - LoadingViewProtocol extension
+extension LoadingViewController: LoadingViewProtocol {
+    func stopAnimation(completion: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            UIView.animate(withDuration: 0.75,
+                           animations: {
+                self.animationView.layer.opacity = 0
+            }) { _ in
+                completion()
+            }
+        }
     }
 }

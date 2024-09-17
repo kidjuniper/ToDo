@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoadingRouterProtocol {
-    func presentMainScreen(withData data: [Int])
+    func presentMainScreen(withData data: Tasks)
     
     var viewController: LoadingViewProtocol! { get set }
 }
@@ -20,11 +20,11 @@ final class LoadingRouter: LoadingRouterProtocol {
         self.viewController = viewController
     }
     
-    func presentMainScreen(withData data: [Int]) {
+    func presentMainScreen(withData data: Tasks) {
         
     }
     
-    static func createModule(userDefaultsManager: UserDefaultManagerProtocol) -> LoadingView {
+    static func createModule(userDefaultsManager: UserDefaultManagerProtocol) -> LoadingViewProtocol {
         let view = LoadingViewController()
         let configurator = LoadingConfigurator()
         configurator.configure(view: view,

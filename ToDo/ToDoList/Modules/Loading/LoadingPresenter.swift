@@ -9,7 +9,7 @@ import Foundation
 
 protocol LoadingPresenterProtocol: AnyObject {
     func viewDidLoad()
-    func dataFetched(data: [Int])
+    func dataFetched(data: Tasks)
     
     var view: LoadingViewProtocol! { get set }
     var interactor: LoadingInteractorProtocol! { get set }
@@ -39,7 +39,9 @@ final class LoadingPresenter: LoadingPresenterProtocol {
         }
     }
     
-    func dataFetched(data: [Int]) {
-        router.presentMainScreen(withData: data)
+    func dataFetched(data: Tasks) {
+        self.view.stopAnimation {
+            self.router.presentMainScreen(withData: data)
+        }
     }
 }

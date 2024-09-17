@@ -33,7 +33,14 @@ final class LoadingInteractor: LoadingInteractorProtocol {
     }
     
     func requestInitialData() {
-        
+        DummyjsonAPIManager().requestData { result in
+            switch result {
+            case .success(let tasks):
+                self.presenter?.dataFetched(data: tasks)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func requestSavedData() {
