@@ -24,5 +24,4 @@ final class LoadingConfigurator: LoadingConfiguratorProtocol {
         presenter.interactor = interactor
         presenter.router = router
     }
-
 }

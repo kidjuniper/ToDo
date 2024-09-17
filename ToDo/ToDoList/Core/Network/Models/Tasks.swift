@@ -9,11 +9,11 @@ import Foundation
 // MARK: - Tasks
 struct Tasks: Codable {
     @DefaultEmptyArray
-    var todos: [Task]
+    var todos: [TaskModel]
 }
 
-// MARK: - Todo
-struct Task: Codable {
+// MARK: - Task
+struct TaskModel: Codable {
     var id: Int
     @DefaultTitleString
     var todo: String

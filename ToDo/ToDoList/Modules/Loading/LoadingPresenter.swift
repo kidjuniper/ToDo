@@ -41,7 +41,7 @@ final class LoadingPresenter: LoadingPresenterProtocol {
     
     func dataFetched(data: Tasks) {
         self.view.stopAnimation {
-            self.router.presentMainScreen(withData: data)
+            self.router.presentListScreen(withData: data)
         }
     }
 }

@@ -14,9 +14,10 @@ protocol LoadingViewProtocol: UIViewController {
 }
 
 class LoadingViewController: UIViewController {
+    var presenter: LoadingPresenterProtocol!
+    
     // MARK: - Private Properties
     private let animationView = LottieAnimationView(name: K.loadingAnimationName)
-    var presenter: LoadingPresenterProtocol!
     
     // MARK: - Initializer
     init(presenter: LoadingPresenterProtocol? = nil) {

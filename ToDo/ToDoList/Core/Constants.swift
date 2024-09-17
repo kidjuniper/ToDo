@@ -6,16 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
 struct K {
     // MARK: - Fonts
-    static let boldFontName = "Geometria Bold"
-    static let regularFontName = "Geometria Light"
+    static let mainFont = UIFont.systemFont(ofSize: 18)
+    static let boldFont = UIFont.systemFont(ofSize: 26,
+                                            weight: .bold)
+    static let lightFont = UIFont.systemFont(ofSize: 17)
     
     // MARK: - Lottie animations names
     static let loadingAnimationName = "loading"
     
-    // MARK: - Templates
+    // MARK: - Data templates
     static let commentStringTemplate = "Notes or comments have not been added to the task"
     static let titleStringTemplate = "Mystery. We lost the title"
+    
+    // MARK: - Colors
 }
