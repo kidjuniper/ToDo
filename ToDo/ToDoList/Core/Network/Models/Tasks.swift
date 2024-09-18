@@ -21,4 +21,8 @@ struct TaskModel: Codable {
     var completed: Bool
     @DefaultCommentString
     var comment: String
+    @DefaultDate
+    var startDate: Date
+    @DefaultDate
+    var endDate: Date
 }

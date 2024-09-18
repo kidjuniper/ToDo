@@ -10,6 +10,15 @@ import UIKit
 import SnapKit
 import Lottie
 
+protocol AnimatableTaskCollectionViewCell: UICollectionViewCell {
+    func animate(fast: Bool)
+    func reset(fast: Bool)
+}
+
+protocol SizableTaskCollectionViewCell: UICollectionViewCell {
+    func returnHeight() -> Int
+}
+
 class TaskCollectionViewCell: UICollectionViewCell {
     private lazy var toDoLabel = makeToDoLabel()
     private lazy var commentLabel = makeCommentLabel()
@@ -18,7 +27,7 @@ class TaskCollectionViewCell: UICollectionViewCell {
     private lazy var midStack = makeMidStack()
     private lazy var lineView = makeLineView()
     private lazy var mainStack = makeMainStack()
-    let timeLabel = UILabel()
+    private lazy var timeLabel = makeTimeLabel()
     
     static let reuseId = "TaskCollectionViewCell"
 
@@ -36,7 +45,6 @@ class TaskCollectionViewCell: UICollectionViewCell {
         let selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView.backgroundColor = UIColor.lightGray
         self.selectedBackgroundView = selectedBackgroundView
-        okAnimatedView.play()
     }
     
     func setUpLayout() {
@@ -48,7 +56,8 @@ class TaskCollectionViewCell: UICollectionViewCell {
         }
         
         okAnimatedView.snp.makeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(60)
+            make.height.greaterThanOrEqualTo(60)
         }
         
         lineView.snp.makeConstraints { make in
@@ -57,6 +66,10 @@ class TaskCollectionViewCell: UICollectionViewCell {
             make.centerX.equalToSuperview()
         }
         
+        timeLabel.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(20)
+        }
         
         contentView.backgroundColor = .white
     }
@@ -64,7 +77,50 @@ class TaskCollectionViewCell: UICollectionViewCell {
     func configure(with task: TaskModel) {
         toDoLabel.text = task.todo
         commentLabel.text = task.comment
-        timeLabel.text = ""
+        timeLabel.text = task.startDate.formattedEventDate(to: task.endDate)
+        if task.completed {
+            okAnimatedView.animationSpeed = 100
+            animate(fast: true)
+        }
+        else {
+            reset(fast: true)
+        }
+    }
+}
+
+extension TaskCollectionViewCell: AnimatableTaskCollectionViewCell {
+    func animate(fast: Bool = false) {
+        okAnimatedView.animationSpeed = fast ? 100 : 1
+        okAnimatedView.play()
+    }
+    
+    func reset(fast: Bool = false) {
+        okAnimatedView.animationSpeed = fast ? 100 : 1
+        okAnimatedView.stop()
+        okAnimatedView.play(toFrame: 10)
+    }
+}
+
+extension TaskCollectionViewCell: SizableTaskCollectionViewCell {
+    public func returnHeight() -> Int {
+        numberOfLines(for: timeLabel.text!,
+                      font: timeLabel.font,
+                      width: timeLabel.bounds.width)
+    }
+    
+    private func numberOfLines(for text: String,
+                               font: UIFont,
+                               width: CGFloat) -> Int {
+        let attributes = [NSAttributedString.Key.font: font]
+        let boundingBox = text.boundingRect(with: CGSize(width: width,
+                                                         height: .greatestFiniteMagnitude),
+                                             options: [.usesLineFragmentOrigin,
+                                                       .usesFontLeading],
+                                             attributes: attributes,
+                                             context: nil)
+        let lineHeight = font.lineHeight
+        let numberOfLines = Int(ceil(boundingBox.height / lineHeight))
+        return numberOfLines
     }
 }
 
@@ -91,6 +147,7 @@ extension TaskCollectionViewCell {
         let stack = UIStackView()
         stack.addArrangedSubviews(toDoLabel,
                                   commentLabel)
+        stack.distribution = .fillProportionally
         stack.axis = .vertical
         return stack
     }
@@ -108,6 +165,8 @@ extension TaskCollectionViewCell {
         stack.addArrangedSubviews(topStack,
                                   okAnimatedView)
         stack.spacing = 5
+        stack.alignment = .fill
+        stack.distribution = .fill
         stack.axis = .horizontal
         return stack
     }
@@ -115,8 +174,10 @@ extension TaskCollectionViewCell {
     private func makeMainStack() -> UIStackView {
         let stack = UIStackView()
         stack.addArrangedSubviews(midStack,
-                                  lineView)
+                                  lineView,
+                                  timeLabel)
         stack.spacing = 5
+        stack.distribution = .fillProportionally
         stack.axis = .vertical
         return stack
     }
@@ -126,4 +187,15 @@ extension TaskCollectionViewCell {
         line.backgroundColor = .lightGray
         return line
     }
+    
+    private func makeTimeLabel() -> UILabel {
+        let label = UILabel()
+        label.font = K.lightFont
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textColor = .lightGray
+        return label
+    }
 }
+
+

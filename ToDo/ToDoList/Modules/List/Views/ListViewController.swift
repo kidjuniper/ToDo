@@ -14,6 +14,8 @@ protocol ListViewProtocol: UIViewController,
                            UICollectionViewDelegateFlowLayout {
     var presenter: ListPresenterProtocol! { get set }
     
+    func animateCell(indexPath: IndexPath,
+                     completedSide: Bool)
     func reloadData()
 }
 
@@ -30,6 +32,8 @@ class ListViewController: UIViewController {
     private lazy var topTodayLabel: UILabel = makeTopTodayLabel()
     private lazy var bottomTodayLabel: UILabel = makeBottomTodayLabel()
     private lazy var collectionView: UICollectionView = makeCollectionView()
+    private lazy var createButton: UIButton = makeCreateButton()
+    private lazy var topStack: UIStackView = makeTopStack()
     
     // MARK: - Initializer
     init(presenter: ListPresenterProtocol? = nil) {
@@ -58,16 +62,20 @@ extension ListViewController {
     }
     
     private func setUpBackground() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = K.backgroundColor
     }
     
     private func setUpLayout() {
-        view.addSubviews(todayStack,
+        view.addSubviews(topStack,
                          collectionView)
         
-        todayStack.snp.makeConstraints { make in
+        topStack.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(80)
-            make.leading.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
+        }
+        
+        createButton.snp.makeConstraints { make in
+            make.width.equalTo(140)
         }
         
         collectionView.snp.makeConstraints { make in
@@ -80,6 +88,17 @@ extension ListViewController {
 
 // MARK: - ListViewProtocol extension
 extension ListViewController: ListViewProtocol {
+    func animateCell(indexPath: IndexPath,
+                     completedSide: Bool) {
+        guard let okCell = collectionView.cellForItem(at: indexPath) as? AnimatableTaskCollectionViewCell else { return }
+        if completedSide {
+            okCell.reset(fast: false)
+        }
+        else {
+            okCell.animate(fast: false)
+        }
+    }
+    
     func reloadData() {
         collectionView.reloadData()
     }
@@ -88,17 +107,20 @@ extension ListViewController: ListViewProtocol {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width * 0.9,
-                      height: 170)
+                      height: 190)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 20,
+                            left: 0,
+                            bottom: 0,
+                            right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.section)
+        presenter.tappedCell(indexPath: indexPath)
     }
 }
 
@@ -124,13 +146,14 @@ extension ListViewController {
     private func makeBottomTodayLabel() -> UILabel {
         let label = UILabel()
         label.font = K.mainFont
-        label.textColor = .white
+        label.textColor = .lightGray
         label.text = "Wednesday, 11"
         return label
     }
     
     private func makeCollectionView() -> UICollectionView {
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 10
         let collectionView = UICollectionView(frame: CGRect.zero,
                                               collectionViewLayout: flowLayout)
         collectionView.register(TaskCollectionViewCell.self,
@@ -139,5 +162,30 @@ extension ListViewController {
         flowLayout.scrollDirection = .vertical
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
+    }
+    
+    private func makeCreateButton() -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = K.baseBlueColor?.withAlphaComponent(0.35)
+        button.layer.cornerRadius = 12
+        button.clipsToBounds = true
+        button.setTitle(" New Task",
+                        for: .normal)
+        button.setImage(UIImage(systemName: "plus"),
+                        for: .normal)
+        button.setTitleColor(K.baseBlueColor,
+                             for: .normal)
+        button.tintColor = K.baseBlueColor
+        return button
+    }
+    
+    private func makeTopStack() -> UIStackView {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        stack.spacing = 5
+        stack.addArrangedSubviews(todayStack,
+                                  createButton)
+        return stack
     }
 }

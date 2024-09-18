@@ -85,3 +85,8 @@ public struct DefaultTitleStringStrategy: DefaultCodableStrategy {
     public static var defaultValue: String { return K.titleStringTemplate }
 }
 public typealias DefaultTitleString = DefaultCodable<DefaultTitleStringStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
+
+public struct DefaultDateStrategy: DefaultCodableStrategy {
+    public static var defaultValue: Date { return Date() }
+}
+public typealias DefaultDate = DefaultCodable<DefaultDateStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.

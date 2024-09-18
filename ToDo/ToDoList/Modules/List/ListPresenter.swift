@@ -11,6 +11,7 @@ import UIKit
 protocol ListPresenterProtocol: AnyObject,
                                 UICollectionViewDataSource {
     func viewDidLoad()
+    func tappedCell(indexPath: IndexPath)
     
     var view: ListViewProtocol! { get set }
     var interactor: ListInteractorProtocol! { get set }
@@ -39,6 +40,14 @@ final class ListPresenter: NSObject,
     
     func viewDidLoad() {
         view.reloadData()
+    }
+    
+    func tappedCell(indexPath: IndexPath) {
+        let index = indexPath.row
+        let completed = tasks.todos[index].completed
+        view.animateCell(indexPath: indexPath,
+                         completedSide: completed)
+        tasks.todos[index].completed = !completed
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
