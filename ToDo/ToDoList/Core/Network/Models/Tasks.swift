@@ -14,7 +14,8 @@ struct Tasks: Codable {
 
 // MARK: - Task
 struct TaskModel: Codable {
-    var id: Int
+    @DefaultID
+    var id: UUID
     @DefaultTitleString
     var todo: String
     @DefaultFalse
@@ -25,4 +26,22 @@ struct TaskModel: Codable {
     var startDate: Date
     @DefaultDate
     var endDate: Date
+    
+    init(from task: TrackerCoreData) {
+        self.id = task.id ?? UUID()
+        self.todo = task.toDo ?? ""
+        self.comment = task.comment ?? ""
+        self.startDate = task.startDate ?? Date()
+        self.endDate = task.endDate ?? Date()
+        self.completed = task.completed
+    }
+    
+    init() {
+        id = UUID()
+        todo = ""
+        completed = false
+        comment = ""
+        startDate = Date()
+        endDate = Date()
+    }
 }

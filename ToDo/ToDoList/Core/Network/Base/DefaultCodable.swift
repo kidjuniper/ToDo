@@ -90,3 +90,9 @@ public struct DefaultDateStrategy: DefaultCodableStrategy {
     public static var defaultValue: Date { return Date() }
 }
 public typealias DefaultDate = DefaultCodable<DefaultDateStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
+
+public struct DefaultIDStrategy: DefaultCodableStrategy {
+    public static var defaultValue: UUID { return UUID() }
+}
+public typealias DefaultID = DefaultCodable<DefaultIDStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
+

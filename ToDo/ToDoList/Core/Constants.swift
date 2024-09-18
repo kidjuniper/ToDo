@@ -19,6 +19,7 @@ struct K {
     
     // MARK: - Lottie animations names
     static let loadingAnimationName = "loading"
+    static let addingModuleAnimationName = "kisa"
     
     // MARK: - Data templates
     static let commentStringTemplate = "Notes or comments have not been added to the task"

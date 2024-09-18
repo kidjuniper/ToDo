@@ -9,32 +9,36 @@ import Foundation
 import UIKit
 
 protocol LoadingRouterProtocol {
-    func presentListScreen(withData data: Tasks)
+    func presentListScreen(withData data: [TaskModel])
     
     var viewController: LoadingViewProtocol! { get set }
 }
 
 final class LoadingRouter: LoadingRouterProtocol {
     weak var viewController: LoadingViewProtocol!
+    private let storageManager: StorageManagerProtocol!
     
-    init(viewController: LoadingViewProtocol? = nil) {
+    init(viewController: LoadingViewProtocol? = nil,
+         storageManager: StorageManagerProtocol) {
         self.viewController = viewController
+        self.storageManager = storageManager
     }
     
-    func presentListScreen(withData data: Tasks) {
-        let list = ListRouter.createModule(data: data)
+    func presentListScreen(withData data: [TaskModel]) {
+        let list = ListRouter.createModule(data: data,
+                                           storageManager: storageManager)
         let rootViewController = UINavigationController(rootViewController: list)
-        let allScenes = UIApplication.shared.connectedScenes
-        let scene = allScenes.first { $0.activationState == .foregroundActive }
-        if let windowScene = scene as? UIWindowScene { windowScene.keyWindow?.rootViewController = rootViewController
-        }
+        UIApplication.shared.windows.first?.rootViewController = rootViewController
+
     }
     
-    static func createModule(userDefaultsManager: UserDefaultManagerProtocol) -> LoadingViewProtocol {
+    static func createModule(userDefaultsManager: UserDefaultManagerProtocol,
+                             storageManager: StorageManagerProtocol) -> LoadingViewProtocol {
         let view = LoadingViewController()
         let configurator = LoadingConfigurator()
         configurator.configure(view: view,
-                               userDefaultsManager: userDefaultsManager)
+                               userDefaultsManager: userDefaultsManager,
+                               storageManager: storageManager)
         return view
     }
 }

@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     let userDefaultsManager = UserDefaultManager()
+    let storageManager = StorageManager()
     
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
@@ -22,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
     private func returnLoadingViewController(withScene scene: UIWindowScene) {
-        let viewController = LoadingRouter.createModule(userDefaultsManager: userDefaultsManager)
+        let viewController = LoadingRouter.createModule(userDefaultsManager: userDefaultsManager,
+                                                        storageManager: storageManager)
         self.window = UIWindow(windowScene: scene)
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()

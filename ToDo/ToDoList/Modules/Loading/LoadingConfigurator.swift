@@ -9,16 +9,20 @@ import Foundation
 
 protocol LoadingConfiguratorProtocol {
     func configure(view: LoadingViewProtocol,
-                   userDefaultsManager: UserDefaultManagerProtocol)
+                   userDefaultsManager: UserDefaultManagerProtocol,
+                   storageManager: StorageManagerProtocol)
 }
 
 final class LoadingConfigurator: LoadingConfiguratorProtocol {
     func configure(view: LoadingViewProtocol,
-                   userDefaultsManager: UserDefaultManagerProtocol) {
+                   userDefaultsManager: UserDefaultManagerProtocol,
+                   storageManager: StorageManagerProtocol) {
         let presenter = LoadingPresenter(view: view)
         let interactor = LoadingInteractor(presenter: presenter,
-                                           userDefaultsManager: userDefaultsManager)
-        let router = LoadingRouter(viewController: view)
+                                           userDefaultsManager: userDefaultsManager,
+                                           storageManager: storageManager)
+        let router = LoadingRouter(viewController: view,
+                                   storageManager: storageManager)
         
         view.presenter = presenter
         presenter.interactor = interactor

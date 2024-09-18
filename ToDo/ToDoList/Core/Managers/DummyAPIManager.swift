@@ -24,7 +24,7 @@ final class DummyjsonAPIManager: DummyjsonAPIManagerProtocol {
                 switch response.result {
                 case .success(let data):
                     completion(.success(data))
-                case .failure(let error):
+                case .failure:
                     completion(.failure(.invalidJSON))
                 }
             }

@@ -13,22 +13,26 @@ protocol LoadingInteractorProtocol {
     func requestSavedData()
     
     var presenter: LoadingPresenterProtocol? { get set }
-    var userDefaultsManager: UserDefaultManagerProtocol { get set }
 }
 
 final class LoadingInteractor: LoadingInteractorProtocol {
     weak var presenter: LoadingPresenterProtocol?
-    var userDefaultsManager: UserDefaultManagerProtocol
+    private var userDefaultsManager: UserDefaultManagerProtocol
+    private var storageManager: StorageManagerProtocol
     
     init(presenter: LoadingPresenterProtocol? = nil,
-         userDefaultsManager: UserDefaultManagerProtocol) {
+         userDefaultsManager: UserDefaultManagerProtocol,
+         storageManager: StorageManagerProtocol) {
         self.presenter = presenter
         self.userDefaultsManager = userDefaultsManager
+        self.storageManager = storageManager
     }
     
     func checkIfItFirstLaunch() -> Bool {
         let isFirst = !(userDefaultsManager.fetchObject(type: Bool.self,
                                          for: .hasAlreadyBeenStarted) ?? false)
+        userDefaultsManager.saveObject(true,
+                                       for: .hasAlreadyBeenStarted)
         return isFirst
     }
     
@@ -36,7 +40,10 @@ final class LoadingInteractor: LoadingInteractorProtocol {
         DummyjsonAPIManager().requestData { result in
             switch result {
             case .success(let tasks):
-                self.presenter?.dataFetched(data: tasks)
+                tasks.todos.forEach { model in
+                    self.storageManager.createTracker(with: model)
+                }
+                self.presenter?.dataFetched(data: tasks.todos)
             case .failure(let error):
                 print(error)
             }
@@ -44,6 +51,6 @@ final class LoadingInteractor: LoadingInteractorProtocol {
     }
     
     func requestSavedData() {
-        
+        self.presenter?.dataFetched(data: storageManager.getAllTrackers())
     }
 }

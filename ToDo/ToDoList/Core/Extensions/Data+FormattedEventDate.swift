@@ -17,7 +17,7 @@ extension Date {
     
     private static let fullDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, d MMMM yyyy"
+        formatter.dateFormat = "EE, d MMM"
         formatter.locale = Locale(identifier: "en")
         return formatter
     }()

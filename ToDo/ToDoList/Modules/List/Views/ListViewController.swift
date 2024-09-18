@@ -59,10 +59,7 @@ extension ListViewController {
     private func setUp() {
         setUpBackground()
         setUpLayout()
-    }
-    
-    private func setUpBackground() {
-        view.backgroundColor = K.backgroundColor
+        setUpTargets()
     }
     
     private func setUpLayout() {
@@ -81,8 +78,19 @@ extension ListViewController {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(todayStack.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview().offset(60)
+            make.bottom.equalToSuperview().inset(60)
         }
+    }
+    
+    // MARK: - Actions
+    private func setUpTargets() {
+        createButton.addTarget(self,
+                               action: #selector(createButtonTapped),
+                               for: .touchUpInside)
+    }
+    
+    @objc func createButtonTapped() {
+        presenter.addNewTapped()
     }
 }
 
@@ -169,7 +177,11 @@ extension ListViewController {
         button.backgroundColor = K.baseBlueColor?.withAlphaComponent(0.35)
         button.layer.cornerRadius = 12
         button.clipsToBounds = true
-        button.setTitle(" New Task",
+        button.titleEdgeInsets = UIEdgeInsets(top: 0,
+                                              left: 7,
+                                              bottom: 0,
+                                              right: 0)
+        button.setTitle("New Task",
                         for: .normal)
         button.setImage(UIImage(systemName: "plus"),
                         for: .normal)
