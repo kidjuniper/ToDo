@@ -64,8 +64,8 @@ extension LoadingViewController {
 // MARK: - LoadingViewProtocol extension
 extension LoadingViewController: LoadingViewProtocol {
     func stopAnimation(completion: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-            UIView.animate(withDuration: 5,
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            UIView.animate(withDuration: 0.75,
                            animations: {
                 self.animationView.layer.opacity = 0
             }) { _ in
