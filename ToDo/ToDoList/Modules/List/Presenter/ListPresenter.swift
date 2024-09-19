@@ -61,8 +61,11 @@ final class ListPresenter: NSObject,
     }
     
     func dataUpdated(data: [TaskModel]) {
+        if data.count != tasks.count {
+            tasks = data
+            view.reloadListCollection()
+        }
         tasks = data
-        view.reloadListCollection()
     }
     
     func tappedCell(indexPath: IndexPath) {
