@@ -86,10 +86,44 @@ public struct DefaultTitleStringStrategy: DefaultCodableStrategy {
 }
 public typealias DefaultTitleString = DefaultCodable<DefaultTitleStringStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
 
-public struct DefaultDateStrategy: DefaultCodableStrategy {
-    public static var defaultValue: Date { return Date() }
+public struct DefaultDateStartStrategy: DefaultCodableStrategy {
+    static let now = Date()
+    static let calendar = Calendar.current
+    public static var defaultValue: Date {
+        let components = calendar.dateComponents([.year,
+                                                  .month,
+            .day],
+                                                 from: now)
+        if let midnight = calendar.date(from: components) {
+            return(midnight)
+        }
+        else {
+            return Date()
+        }
+    }
 }
-public typealias DefaultDate = DefaultCodable<DefaultDateStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
+public typealias DefaultStartDate = DefaultCodable<DefaultDateStartStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
+
+public struct DefaultDateEndStrategy: DefaultCodableStrategy {
+    static let now = Date()
+    static let calendar = Calendar.current
+    public static var defaultValue: Date {
+        var components = calendar.dateComponents([.year,
+                                                  .month,
+            .day],
+                                                 from: now)
+        components.hour = 23
+        components.minute = 59
+
+        if let midnight = calendar.date(from: components) {
+            return(midnight)
+        }
+        else {
+            return Date()
+        }
+    }
+}
+public typealias DefaultEndDate = DefaultCodable<DefaultDateEndStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
 
 public struct DefaultIDStrategy: DefaultCodableStrategy {
     public static var defaultValue: UUID { return UUID() }

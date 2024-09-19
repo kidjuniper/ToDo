@@ -21,6 +21,11 @@ class TimeIntervalPicker: NSObject,
         return pickerView
     }()
     
+    override init() {
+        super.init()
+        setUp()
+    }
+    
     private var days = [Date]()
     private var startTimes = [Date]()
     private var endTimes = [Date]()
@@ -32,7 +37,7 @@ class TimeIntervalPicker: NSObject,
         return pickerView
     }
     
-    func setup() {
+    func setUp() {
         dayFormatter.dateFormat = "EE d MMM"
         timeFormatter.timeStyle = .short
         days = setDays()
@@ -120,7 +125,7 @@ class TimeIntervalPicker: NSObject,
                                      animated: true)
                 endTime = endTimes[nextValidEndTimeIndex]
             } else {
-                pickerView.selectRow(endTimes.count - 1, 
+                pickerView.selectRow(endTimes.count - 1,
                                      inComponent: 2,
                                      animated: true)
                 endTime = endTimes.last!
@@ -154,7 +159,7 @@ class TimeIntervalPicker: NSObject,
         let interval = 60
         while Calendar.current.component(.hour, from: currentDate) < 23 {
             times.append(currentDate)
-            currentDate = calendar.date(byAdding: .minute, 
+            currentDate = calendar.date(byAdding: .minute,
                                         value: interval,
                                         to: currentDate) ?? Date()
         }

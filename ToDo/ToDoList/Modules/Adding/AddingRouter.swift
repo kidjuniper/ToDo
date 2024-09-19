@@ -10,7 +10,8 @@ import UIKit
 
 protocol AddingRouterProtocol {
     static func createModule(data: TaskModel,
-                             storageManager: StorageManagerProtocol) -> AddingViewProtocol
+                             storageManager: StorageManagerProtocol,
+                             addingMode: AddingMode) -> AddingViewProtocol
     func dismiss()
 }
 
@@ -24,16 +25,23 @@ final class AddingRouter: AddingRouterProtocol {
         self.storageManager = storageManager
     }
     static func createModule(data: TaskModel,
-                             storageManager: StorageManagerProtocol) -> AddingViewProtocol {
+                             storageManager: StorageManagerProtocol,
+                             addingMode: AddingMode) -> AddingViewProtocol {
         let view = AddingViewController()
         let configurator = AddingConfigurator()
         configurator.configure(view: view,
                                data: data,
-                               storageManager: storageManager)
+                               storageManager: storageManager,
+                               addingMode: addingMode)
         return view
     }
     
     func dismiss() {
         viewController.dismiss(animated: true)
     }
+}
+
+enum AddingMode {
+    case adding
+    case editing
 }

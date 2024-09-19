@@ -12,8 +12,10 @@ import Lottie
 protocol AddingViewProtocol: UIViewController {
     var presenter: AddingPresenterProtocol! { get set }
     
-    func setUpWithDate(data: TaskModel)
+    func setUpWithData(data: TaskModel,
+                       mode: AddingMode)
     func makeCommentTextFieldFirstResponder()
+    func makeDateTextFieldFirstResponder()
 }
 
 class AddingViewController: UIViewController {
@@ -79,7 +81,7 @@ extension AddingViewController {
         }
         
         titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(topLabel.snp_bottomMargin).offset(25)
+            make.top.equalTo(topLabel.snp_bottomMargin).offset(55)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(70)
         }
@@ -131,11 +133,23 @@ extension AddingViewController {
 }
 
 extension AddingViewController: AddingViewProtocol {
+    func makeDateTextFieldFirstResponder() {
+        dateTextField.becomeFirstResponder()
+    }
+    
     func makeCommentTextFieldFirstResponder() {
         commentTextField.becomeFirstResponder()
     }
     
-    func setUpWithDate(data: TaskModel) {
+    func setUpWithData(data: TaskModel,
+                       mode: AddingMode) {
+        switch mode {
+        case .adding:
+            topLabel.text = "New task"
+        case .editing:
+            topLabel.text = "Edit task"
+            dateTextField.text = data.startDate.formattedEventDate(to: data.endDate)
+        }
         titleTextField.text = data.todo
         commentTextField.text = data.comment
     }
@@ -145,7 +159,7 @@ extension AddingViewController {
     private func makeCloserView() -> UIView {
         let closer = UIView()
         closer.layer.cornerRadius = 4
-        closer.backgroundColor = .lightGray
+        closer.backgroundColor = .lightGray.withAlphaComponent(0.8)
         closer.clipsToBounds = true
         return closer
     }
@@ -155,7 +169,6 @@ extension AddingViewController {
         label.font = K.boldFont
         label.textColor = .black
         label.textAlignment = .center
-        label.text = "New task"
         return label
     }
     
@@ -199,7 +212,6 @@ extension AddingViewController {
     
     private func makeTimeIntervalPicker() -> TimeIntervalPicker {
         let timeIntervalPicker = TimeIntervalPicker()
-        timeIntervalPicker.setup()
         timeIntervalPicker.didSelectDates = { [weak self] (startDate,
                                                            endDate) in
             self?.presenter.updateCurrentDateInterval(startDate: startDate,
@@ -228,4 +240,3 @@ extension AddingViewController {
         return button
     }
 }
-

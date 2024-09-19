@@ -22,9 +22,9 @@ struct TaskModel: Codable {
     var completed: Bool
     @DefaultCommentString
     var comment: String
-    @DefaultDate
+    @DefaultStartDate
     var startDate: Date
-    @DefaultDate
+    @DefaultEndDate
     var endDate: Date
     
     init(from task: TrackerCoreData) {

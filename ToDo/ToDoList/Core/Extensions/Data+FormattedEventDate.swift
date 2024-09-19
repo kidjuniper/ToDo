@@ -25,7 +25,8 @@ extension Date {
     func formattedEventDate(to endDate: Date) -> String {
         let calendar = Calendar.current
         var timeString = "\(Date.timeFormatter.string(from: self)) - \(Date.timeFormatter.string(from: endDate))"
-        if Date.timeFormatter.string(from: self) == Date.timeFormatter.string(from: endDate) {
+        if Date.timeFormatter.string(from: self) == "12:00 AM",
+           Date.timeFormatter.string(from: endDate) == "11:59 PM" {
             timeString = "All Day"
         }
         

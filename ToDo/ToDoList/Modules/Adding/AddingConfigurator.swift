@@ -10,17 +10,21 @@ import Foundation
 protocol AddingConfiguratorProtocol {
     func configure(view: AddingViewProtocol,
                    data: TaskModel,
-                   storageManager: StorageManagerProtocol)
+                   storageManager: StorageManagerProtocol,
+                   addingMode: AddingMode)
 }
 
 final class AddingConfigurator: AddingConfiguratorProtocol {
     func configure(view: AddingViewProtocol,
                    data: TaskModel,
-                   storageManager: StorageManagerProtocol) {
+                   storageManager: StorageManagerProtocol,
+                   addingMode: AddingMode) {
         let presenter = AddingPresenter(view: view,
-                                      data: data)
+                                        data: data,
+                                        mode: addingMode)
         let interactor = AddingInteractor(presenter: presenter,
-                                          storageManager: storageManager)
+                                          storageManager: storageManager,
+                                          addingMode: addingMode)
         let router = AddingRouter(viewController: view,
                                   storageManager: storageManager)
         

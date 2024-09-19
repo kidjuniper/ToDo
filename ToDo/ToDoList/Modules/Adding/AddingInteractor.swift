@@ -9,23 +9,31 @@ import Foundation
 
 protocol AddingInteractorProtocol {
     var presenter: AddingPresenterProtocol? { get set }
-    var storageManager: StorageManagerProtocol { get set }
     
-    func saveNewTask(task: TaskModel)
+    func save(task: TaskModel)
 }
 
 final class AddingInteractor: AddingInteractorProtocol {
     weak var presenter: AddingPresenterProtocol?
-    var storageManager: StorageManagerProtocol
+    private var storageManager: StorageManagerProtocol
+    private let mode: AddingMode
     
     // MARK: - Initializer
     init(presenter: AddingPresenterProtocol? = nil,
-         storageManager: StorageManagerProtocol) {
+         storageManager: StorageManagerProtocol,
+         addingMode: AddingMode) {
         self.presenter = presenter
         self.storageManager = storageManager
+        self.mode = addingMode
     }
     
-    func saveNewTask(task: TaskModel) {
-        storageManager.createTracker(with: task)
+    func save(task: TaskModel) {
+        switch mode {
+        case .adding:
+            storageManager.createTracker(with: task)
+        case .editing:
+            storageManager.updateTrackerData(withData: task)
+        }
+        
     }
 }

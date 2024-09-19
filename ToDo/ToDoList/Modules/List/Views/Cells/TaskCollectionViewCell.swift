@@ -11,15 +11,16 @@ import SnapKit
 import Lottie
 
 protocol AnimatableTaskCollectionViewCell: UICollectionViewCell {
-    func animate(fast: Bool)
-    func reset(fast: Bool)
+    func animate(animate: Bool)
+    func reset(animate: Bool)
 }
 
-protocol SizableTaskCollectionViewCell: UICollectionViewCell {
-    func returnHeight() -> Int
+protocol IdentifiableCollectionViewCell: UICollectionViewCell {
+    var uuid: UUID { get set }
 }
 
-class TaskCollectionViewCell: UICollectionViewCell {
+class TaskCollectionViewCell: UICollectionViewCell,
+                              IdentifiableCollectionViewCell {
     private lazy var toDoLabel = makeToDoLabel()
     private lazy var commentLabel = makeCommentLabel()
     private lazy var topStack = makeTopStack()
@@ -28,6 +29,7 @@ class TaskCollectionViewCell: UICollectionViewCell {
     private lazy var lineView = makeLineView()
     private lazy var mainStack = makeMainStack()
     private lazy var timeLabel = makeTimeLabel()
+    var uuid = UUID()
     
     static let reuseId = "TaskCollectionViewCell"
 
@@ -82,49 +84,26 @@ class TaskCollectionViewCell: UICollectionViewCell {
         toDoLabel.text = task.todo
         commentLabel.text = task.comment
         timeLabel.text = task.startDate.formattedEventDate(to: task.endDate)
+        uuid = task.id
         if task.completed {
-            okAnimatedView.animationSpeed = 100
-            animate(fast: true)
+            self.animate(animate: false)
         }
         else {
-            reset(fast: true)
+            reset(animate: false)
         }
     }
 }
 
 extension TaskCollectionViewCell: AnimatableTaskCollectionViewCell {
-    func animate(fast: Bool = false) {
-        okAnimatedView.animationSpeed = fast ? 100 : 1
+    func animate(animate: Bool = false) {
+        okAnimatedView.animationSpeed = animate ? 1 : 100
         okAnimatedView.play()
     }
     
-    func reset(fast: Bool = false) {
-        okAnimatedView.animationSpeed = fast ? 100 : 1
+    func reset(animate: Bool = false) {
+        okAnimatedView.animationSpeed = animate ? 1 : 100
         okAnimatedView.stop()
         okAnimatedView.play(toFrame: 10)
-    }
-}
-
-extension TaskCollectionViewCell: SizableTaskCollectionViewCell {
-    public func returnHeight() -> Int {
-        numberOfLines(for: timeLabel.text!,
-                      font: timeLabel.font,
-                      width: timeLabel.bounds.width)
-    }
-    
-    private func numberOfLines(for text: String,
-                               font: UIFont,
-                               width: CGFloat) -> Int {
-        let attributes = [NSAttributedString.Key.font: font]
-        let boundingBox = text.boundingRect(with: CGSize(width: width,
-                                                         height: .greatestFiniteMagnitude),
-                                             options: [.usesLineFragmentOrigin,
-                                                       .usesFontLeading],
-                                             attributes: attributes,
-                                             context: nil)
-        let lineHeight = font.lineHeight
-        let numberOfLines = Int(ceil(boundingBox.height / lineHeight))
-        return numberOfLines
     }
 }
 
@@ -201,5 +180,3 @@ extension TaskCollectionViewCell {
         return label
     }
 }
-
-

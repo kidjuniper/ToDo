@@ -14,16 +14,22 @@ protocol ListViewProtocol: UIViewController,
                            UICollectionViewDelegateFlowLayout {
     var presenter: ListPresenterProtocol! { get set }
     
-    func animateCell(indexPath: IndexPath,
+    func reloadListCollection()
+    func reloadSortingModeCollection()
+    func animateCell(on indexPath: IndexPath,
                      completedSide: Bool)
-    func reloadData()
+    func deleteTask(on indexPath: IndexPath)
+    func setUpAsAllTasks()
+    func setUpAsTodaysTasks()
 }
 
 class ListViewController: UIViewController {
     var presenter: ListPresenterProtocol! {
         didSet {
-            collectionView.dataSource = presenter
-            collectionView.delegate = self
+            listCollectionView.dataSource = presenter
+            listCollectionView.delegate = self
+            sortingCollectionView.dataSource = presenter
+            sortingCollectionView.delegate = self
         }
     }
     
@@ -31,7 +37,8 @@ class ListViewController: UIViewController {
     private lazy var todayStack: UIStackView = makeTodaysStack()
     private lazy var topTodayLabel: UILabel = makeTopTodayLabel()
     private lazy var bottomTodayLabel: UILabel = makeBottomTodayLabel()
-    private lazy var collectionView: UICollectionView = makeCollectionView()
+    private lazy var sortingCollectionView: UICollectionView = makeSortingCollectionView()
+    private lazy var listCollectionView: UICollectionView = makeCollectionView()
     private lazy var createButton: UIButton = makeCreateButton()
     private lazy var topStack: UIStackView = makeTopStack()
     
@@ -64,19 +71,26 @@ extension ListViewController {
     
     private func setUpLayout() {
         view.addSubviews(topStack,
-                         collectionView)
+                         sortingCollectionView,
+                         listCollectionView)
         
         topStack.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(80)
             make.horizontalEdges.equalToSuperview().inset(20)
         }
         
+        sortingCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(todayStack.snp.bottom).offset(40)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
         createButton.snp.makeConstraints { make in
             make.width.equalTo(140)
         }
         
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(todayStack.snp.bottom).offset(20)
+        listCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(sortingCollectionView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview().inset(60)
         }
@@ -92,43 +106,108 @@ extension ListViewController {
     @objc func createButtonTapped() {
         presenter.addNewTapped()
     }
+    
+    @objc private func modeSelectorTapped() {
+        presenter.changeMode()
+    }
 }
 
 // MARK: - ListViewProtocol extension
 extension ListViewController: ListViewProtocol {
-    func animateCell(indexPath: IndexPath,
-                     completedSide: Bool) {
-        guard let okCell = collectionView.cellForItem(at: indexPath) as? AnimatableTaskCollectionViewCell else { return }
-        if completedSide {
-            okCell.reset(fast: false)
-        }
-        else {
-            okCell.animate(fast: false)
+    func setUpAsAllTasks() {
+        topTodayLabel.text = "All tasks"
+        bottomTodayLabel.text = "On one page"
+    }
+    
+    func setUpAsTodaysTasks() {
+        topTodayLabel.text = "Today's tasks"
+        let today = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, d"
+        let formattedDate = dateFormatter.string(from: today)
+        bottomTodayLabel.text = formattedDate
+    }
+    
+    func deleteTask(on indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            self.listCollectionView.deleteItems(at: [indexPath])
         }
     }
     
-    func reloadData() {
-        collectionView.reloadData()
+    func animateCell(on indexPath: IndexPath,
+                     completedSide: Bool) {
+        guard let okCell = listCollectionView.cellForItem(at: indexPath) as? AnimatableTaskCollectionViewCell else { return }
+        if completedSide {
+            okCell.reset(animate: true)
+        }
+        else {
+            okCell.animate(animate: true)
+        }
+    }
+    
+    func reloadListCollection() {
+        DispatchQueue.main.async {
+            self.listCollectionView.reloadData()
+        }
+    }
+    
+    func reloadSortingModeCollection() {
+        DispatchQueue.main.async {
+            self.sortingCollectionView.reloadData()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width * 0.9,
-                      height: 190)
+        switch collectionView.tag {
+        case K.listCollectionViewTag:
+            return CGSize(width: collectionView.bounds.width * 0.9,
+                          height: 190)
+        case K.sortingCollectionViewTag:
+            if indexPath.row == 1 {
+                return CGSize(width: 2,
+                              height: 25)
+            }
+            else {
+                return CGSize(width: 75 + indexPath.row * 10,
+                              height: 30)
+            }
+        default:
+            print("Unknown collection view")
+            return CGSize.zero
+        }
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20,
-                            left: 0,
-                            bottom: 0,
-                            right: 0)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch collectionView.tag {
+        case K.sortingCollectionViewTag:
+            return UIEdgeInsets.zero
+        case K.listCollectionViewTag:
+            return UIEdgeInsets(top: 20,
+                                left: 0,
+                                bottom: 0,
+                                right: 0)
+        default:
+            print("Unknown collection view")
+            return UIEdgeInsets.zero
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        presenter.tappedCell(indexPath: indexPath)
+        switch collectionView.tag {
+        case K.listCollectionViewTag:
+            presenter.tappedCell(indexPath: indexPath)
+        case K.sortingCollectionViewTag:
+            presenter.selectedSorting(indexPath: indexPath)
+        default:
+            print("Unknown collection view")
+        }
     }
 }
 
@@ -140,6 +219,11 @@ extension ListViewController {
         stack.spacing = 4
         stack.addArrangedSubviews(topTodayLabel,
                                   bottomTodayLabel)
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(modeSelectorTapped))
+        stack.isUserInteractionEnabled = true
+        stack.addGestureRecognizer(tapGesture)
+        
         return stack
     }
     
@@ -147,7 +231,7 @@ extension ListViewController {
         let label = UILabel()
         label.font = K.boldFont
         label.textColor = .black
-        label.text = "Today's Task"
+        label.text = "All Task"
         return label
     }
     
@@ -155,20 +239,38 @@ extension ListViewController {
         let label = UILabel()
         label.font = K.mainFont
         label.textColor = .lightGray
-        label.text = "Wednesday, 11"
+        label.text = "On one page"
         return label
     }
     
     private func makeCollectionView() -> UICollectionView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 10
+        flowLayout.scrollDirection = .vertical
+        
         let collectionView = UICollectionView(frame: CGRect.zero,
                                               collectionViewLayout: flowLayout)
         collectionView.register(TaskCollectionViewCell.self,
                                 forCellWithReuseIdentifier: TaskCollectionViewCell.reuseId)
         collectionView.backgroundColor = .clear
-        flowLayout.scrollDirection = .vertical
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.tag = K.listCollectionViewTag
+        return collectionView
+    }
+    
+    private func makeSortingCollectionView() -> UICollectionView {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: CGRect.zero,
+                                              collectionViewLayout: flowLayout)
+        collectionView.register(SortingCollectionViewCell.self,
+                                forCellWithReuseIdentifier: SortingCollectionViewCell.reuseId)
+        collectionView.register(SeparatorCollectionViewCell.self,
+                                forCellWithReuseIdentifier: SeparatorCollectionViewCell.reuseId)
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.tag = K.sortingCollectionViewTag
         return collectionView
     }
     

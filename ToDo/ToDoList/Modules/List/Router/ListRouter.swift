@@ -10,7 +10,8 @@ import Foundation
 protocol ListRouterProtocol {
     static func createModule(data: [TaskModel],
                              storageManager: StorageManagerProtocol) -> ListViewProtocol
-    func presentAddingScreen(withData data: TaskModel)
+    func presentAddingScreen(withData data: TaskModel,
+                             withMode mode: AddingMode)
     
     var viewController: ListViewProtocol! { get set }
 }
@@ -34,9 +35,11 @@ final class ListRouter: ListRouterProtocol {
         return view
     }
     
-    func presentAddingScreen(withData data: TaskModel) {
+    func presentAddingScreen(withData data: TaskModel,
+                             withMode mode: AddingMode) {
         let list = AddingRouter.createModule(data: data,
-                                             storageManager: storageManager)
+                                             storageManager: storageManager,
+                                             addingMode: mode)
         list.modalPresentationStyle = .pageSheet
         viewController.present(list,
                                animated: true)

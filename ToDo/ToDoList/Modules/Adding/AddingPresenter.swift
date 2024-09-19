@@ -25,7 +25,7 @@ protocol AddingPresenterProtocol: AnyObject,
 final class AddingPresenter: NSObject,
                              AddingPresenterProtocol {
     func saveButtonTapped() {
-        interactor.saveNewTask(task: data)
+        interactor.save(task: data)
         router.dismiss()
     }
     
@@ -35,18 +35,23 @@ final class AddingPresenter: NSObject,
     
     // MARK: - Private Properties
     private var data: TaskModel
+    private let mode: AddingMode
     
     init(view: AddingViewProtocol? = nil,
          interactor: AddingInteractorProtocol? = nil,
          router: AddingRouterProtocol? = nil,
-         data: TaskModel) {
+         data: TaskModel,
+         mode: AddingMode) {
         self.view = view
         self.interactor = interactor
         self.router = router
         self.data = data
+        self.mode = mode
     }
     
     func viewDidLoad() {
+        view.setUpWithData(data: data,
+                           mode: mode)
     }
     
     func updateCurrentTitle(withTitle title: String) {
@@ -68,7 +73,7 @@ final class AddingPresenter: NSObject,
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String
     ) -> Bool {
-        let maxLength = 38
+        let maxLength = 50
         let currentString = (textField.text ?? "") as NSString
         let newString = currentString.replacingCharacters(in: range,
                                                           with: string)
@@ -79,6 +84,8 @@ final class AddingPresenter: NSObject,
         switch textField.tag {
         case 1:
             view.makeCommentTextFieldFirstResponder()
+        case 2:
+            view.makeDateTextFieldFirstResponder()
         default:
             textField.resignFirstResponder()
         }

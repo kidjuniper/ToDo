@@ -28,4 +28,13 @@ struct K {
     // MARK: - Colors
     static let backgroundColor = UIColor(named: "foregroundGray")
     static let baseBlueColor = UIColor(named: "baseBlue")
+    
+    // MARK: - Tags
+    static let listCollectionViewTag = 70001
+    static let sortingCollectionViewTag = 70002
+    
+    // MARK: - Other
+    static let sortingModes = ["All",
+                               "Open",
+                               "Closed"]
 }
