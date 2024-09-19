@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ToDo
+//  ToDoList
 //
-//  Created by Nikita Stepanov on 17.09.2024.
+//  Created by Nikita Stepanov on 16.09.2024.
 //
 
 import UIKit
