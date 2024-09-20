@@ -16,6 +16,7 @@ protocol AddingViewProtocol: UIViewController {
                        mode: AddingMode)
     func makeCommentTextFieldFirstResponder()
     func makeDateTextFieldFirstResponder()
+    func presentSetDataAlert()
 }
 
 class AddingViewController: UIViewController {
@@ -36,6 +37,7 @@ class AddingViewController: UIViewController {
         super.init(nibName: nil,
                    bundle: nil)
         self.presenter = presenter
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     required init?(coder: NSCoder) {
@@ -83,19 +85,19 @@ extension AddingViewController {
         titleTextField.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp_bottomMargin).offset(55)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(70)
+            make.height.equalTo(50)
         }
         
         commentTextField.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp_bottomMargin).offset(25)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(70)
+            make.height.equalTo(50)
         }
         
         dateTextField.snp.makeConstraints { make in
             make.top.equalTo(commentTextField.snp_bottomMargin).offset(25)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(70)
+            make.height.equalTo(50)
         }
         
         saveButton.snp.makeConstraints { make in
@@ -132,7 +134,19 @@ extension AddingViewController {
     }
 }
 
+// MARK: - AddingViewProtocol extension
 extension AddingViewController: AddingViewProtocol {
+    func presentSetDataAlert() {
+        let alert = UIAlertController(title: K.fillDataAlertTitle,
+                                      message: K.fillDataAlertMessage,
+                                      preferredStyle: .actionSheet)
+        let closeAction = UIAlertAction(title: "Ok",
+                                        style: .default)
+        alert.addAction(closeAction)
+        self.present(alert,
+                     animated: true)
+    }
+    
     func makeDateTextFieldFirstResponder() {
         dateTextField.becomeFirstResponder()
     }

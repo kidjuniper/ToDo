@@ -15,6 +15,8 @@ protocol AddingInteractorProtocol {
 
 final class AddingInteractor: AddingInteractorProtocol {
     weak var presenter: AddingPresenterProtocol?
+    
+    // MARK: - Private Properties
     private var storageManager: StorageManagerProtocol
     private let mode: AddingMode
     
@@ -30,10 +32,9 @@ final class AddingInteractor: AddingInteractorProtocol {
     func save(task: TaskModel) {
         switch mode {
         case .adding:
-            storageManager.createTracker(with: task)
+            storageManager.createTask(with: task)
         case .editing:
-            storageManager.updateTrackerData(withData: task)
+            storageManager.updateTaskData(withData: task)
         }
-        
     }
 }

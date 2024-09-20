@@ -22,11 +22,17 @@ protocol AddingPresenterProtocol: AnyObject,
     var router: AddingRouterProtocol! { get set }
 }
 
-final class AddingPresenter: NSObject,
-                             AddingPresenterProtocol {
+final class AddingPresenter: NSObject {
     func saveButtonTapped() {
-        interactor.save(task: data)
-        router.dismiss()
+        if data.todo.replacingOccurrences(of: " ",
+                                          with: "") != "",
+           data.startDate != data.endDate {
+            interactor.save(task: data)
+            router.dismiss()
+        }
+        else {
+            view.presentSetDataAlert()
+        }
     }
     
     var view: AddingViewProtocol!
@@ -37,6 +43,7 @@ final class AddingPresenter: NSObject,
     private var data: TaskModel
     private let mode: AddingMode
     
+    // MARK: - Initializer
     init(view: AddingViewProtocol? = nil,
          interactor: AddingInteractorProtocol? = nil,
          router: AddingRouterProtocol? = nil,
@@ -48,7 +55,10 @@ final class AddingPresenter: NSObject,
         self.data = data
         self.mode = mode
     }
-    
+}
+
+// MARK: - AddingPresenterProtocol extension
+extension AddingPresenter: AddingPresenterProtocol {
     func viewDidLoad() {
         view.setUpWithData(data: data,
                            mode: mode)

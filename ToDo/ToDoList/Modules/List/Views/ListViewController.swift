@@ -47,6 +47,7 @@ class ListViewController: UIViewController {
         super.init(nibName: nil,
                    bundle: nil)
         self.presenter = presenter
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +76,7 @@ extension ListViewController {
                          listCollectionView)
         
         topStack.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(80)
+            make.top.equalToSuperview().inset(K.topSpace)
             make.horizontalEdges.equalToSuperview().inset(20)
         }
         
@@ -92,7 +93,7 @@ extension ListViewController {
         listCollectionView.snp.makeConstraints { make in
             make.top.equalTo(sortingCollectionView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview().inset(60)
+            make.bottom.equalToSuperview().inset(K.bottomSpace)
         }
     }
     
@@ -138,10 +139,10 @@ extension ListViewController: ListViewProtocol {
                      completedSide: Bool) {
         guard let okCell = listCollectionView.cellForItem(at: indexPath) as? AnimatableTaskCollectionViewCell else { return }
         if completedSide {
-            okCell.reset(animate: true)
+            okCell.animate(animate: true)
         }
         else {
-            okCell.animate(animate: true)
+            okCell.reset(animate: true)
         }
     }
     
@@ -161,10 +162,10 @@ extension ListViewController: ListViewProtocol {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView.tag {
-        case K.listCollectionViewTag:
+        case K.tags.listCollectionViewTag.rawValue:
             return CGSize(width: collectionView.bounds.width * 0.9,
                           height: 190)
-        case K.sortingCollectionViewTag:
+        case K.tags.sortingCollectionViewTag.rawValue:
             if indexPath.row == 1 {
                 return CGSize(width: 2,
                               height: 25)
@@ -184,9 +185,9 @@ extension ListViewController: ListViewProtocol {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         switch collectionView.tag {
-        case K.sortingCollectionViewTag:
+        case K.tags.sortingCollectionViewTag.rawValue:
             return UIEdgeInsets.zero
-        case K.listCollectionViewTag:
+        case K.tags.listCollectionViewTag.rawValue:
             return UIEdgeInsets(top: 20,
                                 left: 0,
                                 bottom: 0,
@@ -201,9 +202,9 @@ extension ListViewController: ListViewProtocol {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         switch collectionView.tag {
-        case K.listCollectionViewTag:
+        case K.tags.listCollectionViewTag.rawValue:
             presenter.tappedCell(indexPath: indexPath)
-        case K.sortingCollectionViewTag:
+        case K.tags.sortingCollectionViewTag.rawValue:
             presenter.selectedSorting(indexPath: indexPath)
         default:
             print("Unknown collection view")
@@ -254,7 +255,7 @@ extension ListViewController {
                                 forCellWithReuseIdentifier: TaskCollectionViewCell.reuseId)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.tag = K.listCollectionViewTag
+        collectionView.tag = K.tags.listCollectionViewTag.rawValue
         return collectionView
     }
     
@@ -270,7 +271,7 @@ extension ListViewController {
                                 forCellWithReuseIdentifier: SeparatorCollectionViewCell.reuseId)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.tag = K.sortingCollectionViewTag
+        collectionView.tag = K.tags.sortingCollectionViewTag.rawValue
         return collectionView
     }
     

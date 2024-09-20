@@ -16,15 +16,22 @@ protocol ListRouterProtocol {
     var viewController: ListViewProtocol! { get set }
 }
 
-final class ListRouter: ListRouterProtocol {
+final class ListRouter {
     weak var viewController: ListViewProtocol!
+    
+    // MARK: - Private Properties
     private let storageManager: StorageManagerProtocol!
     
+    // MARK: - Initializer
     init(viewController: ListViewProtocol? = nil,
          storageManager: StorageManagerProtocol) {
         self.viewController = viewController
         self.storageManager = storageManager
     }
+}
+
+// MARK: - ListRouterProtocol extension
+extension ListRouter: ListRouterProtocol {
     static func createModule(data: [TaskModel],
                              storageManager: StorageManagerProtocol) -> ListViewProtocol {
         let view = ListViewController()

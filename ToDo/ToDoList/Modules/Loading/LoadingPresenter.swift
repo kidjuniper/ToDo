@@ -16,19 +16,23 @@ protocol LoadingPresenterProtocol: AnyObject {
     var router: LoadingRouterProtocol! { get set }
 }
 
-final class LoadingPresenter: LoadingPresenterProtocol {
+final class LoadingPresenter {
     var view: LoadingViewProtocol!
     var interactor: LoadingInteractorProtocol!
     var router: LoadingRouterProtocol!
     
-    init(view: LoadingViewProtocol? = nil,
+    // MARK: - Initializer
+    init(view: LoadingViewProtocol,
          interactor: LoadingInteractorProtocol? = nil,
          router: LoadingRouterProtocol? = nil) {
         self.view = view
         self.interactor = interactor
         self.router = router
     }
-    
+}
+
+// MARK: - LoadingPresenterProtocol extension
+extension LoadingPresenter: LoadingPresenterProtocol {
     func viewDidLoad() {
         let isFirst = interactor.checkIfItFirstLaunch()
         if isFirst {

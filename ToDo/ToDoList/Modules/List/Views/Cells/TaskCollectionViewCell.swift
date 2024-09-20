@@ -24,11 +24,11 @@ class TaskCollectionViewCell: UICollectionViewCell,
     private lazy var toDoLabel = makeToDoLabel()
     private lazy var commentLabel = makeCommentLabel()
     private lazy var topStack = makeTopStack()
-    private let okAnimatedView = LottieAnimationView(name: "ok")
     private lazy var midStack = makeMidStack()
     private lazy var lineView = makeLineView()
     private lazy var mainStack = makeMainStack()
     private lazy var timeLabel = makeTimeLabel()
+    private let okAnimatedView = LottieAnimationView(name: "ok")
     var uuid = UUID()
     
     static let reuseId = "TaskCollectionViewCell"
@@ -83,6 +83,10 @@ class TaskCollectionViewCell: UICollectionViewCell,
     func configure(with task: TaskModel) {
         toDoLabel.text = task.todo
         commentLabel.text = task.comment
+        if task.comment.replacingOccurrences(of: " ",
+                                             with: "") == "" {
+            commentLabel.text = K.commentStringTemplate
+        }
         timeLabel.text = task.startDate.formattedEventDate(to: task.endDate)
         uuid = task.id
         if task.completed {

@@ -14,16 +14,22 @@ protocol LoadingRouterProtocol {
     var viewController: LoadingViewProtocol! { get set }
 }
 
-final class LoadingRouter: LoadingRouterProtocol {
+final class LoadingRouter {
     weak var viewController: LoadingViewProtocol!
+    
+    // MARK: - Private Properties
     private let storageManager: StorageManagerProtocol!
     
+    // MARK: - Initializer
     init(viewController: LoadingViewProtocol? = nil,
          storageManager: StorageManagerProtocol) {
         self.viewController = viewController
         self.storageManager = storageManager
     }
-    
+}
+
+// MARK: - LoadingRouterProtocol extension
+extension LoadingRouter: LoadingRouterProtocol {
     func presentListScreen(withData data: [TaskModel]) {
         let list = ListRouter.createModule(data: data,
                                            storageManager: storageManager)

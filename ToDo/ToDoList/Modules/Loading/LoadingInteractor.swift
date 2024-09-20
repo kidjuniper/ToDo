@@ -15,11 +15,14 @@ protocol LoadingInteractorProtocol {
     var presenter: LoadingPresenterProtocol? { get set }
 }
 
-final class LoadingInteractor: LoadingInteractorProtocol {
+final class LoadingInteractor {
     weak var presenter: LoadingPresenterProtocol?
+    
+    // MARK: - Private Properties
     private var userDefaultsManager: UserDefaultManagerProtocol
     private var storageManager: StorageManagerProtocol
     
+    // MARK: - Initializer
     init(presenter: LoadingPresenterProtocol? = nil,
          userDefaultsManager: UserDefaultManagerProtocol,
          storageManager: StorageManagerProtocol) {
@@ -27,7 +30,10 @@ final class LoadingInteractor: LoadingInteractorProtocol {
         self.userDefaultsManager = userDefaultsManager
         self.storageManager = storageManager
     }
-    
+}
+
+// MARK: - LoadingInteractorProtocol extension
+extension LoadingInteractor: LoadingInteractorProtocol {
     func checkIfItFirstLaunch() -> Bool {
         let isFirst = !(userDefaultsManager.fetchObject(type: Bool.self,
                                          for: .hasAlreadyBeenStarted) ?? false)
@@ -41,7 +47,7 @@ final class LoadingInteractor: LoadingInteractorProtocol {
             switch result {
             case .success(let tasks):
                 tasks.todos.forEach { model in
-                    self.storageManager.createTracker(with: model)
+                    self.storageManager.createTask(with: model)
                 }
                 self.presenter?.dataFetched(data: tasks.todos)
             case .failure(let error):
@@ -51,6 +57,6 @@ final class LoadingInteractor: LoadingInteractorProtocol {
     }
     
     func requestSavedData() {
-        self.presenter?.dataFetched(data: storageManager.getAllTrackers())
+        self.presenter?.dataFetched(data: storageManager.getAllTasks())
     }
 }

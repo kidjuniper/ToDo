@@ -56,7 +56,7 @@ extension LoadingViewController {
         animationView.play()
     }
     
-    func setUpWhiteBackground() {
+    private func setUpWhiteBackground() {
         view.backgroundColor = .white
     }
 }
@@ -64,7 +64,7 @@ extension LoadingViewController {
 // MARK: - LoadingViewProtocol extension
 extension LoadingViewController: LoadingViewProtocol {
     func stopAnimation(completion: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             UIView.animate(withDuration: 0.75,
                            animations: {
                 self.animationView.layer.opacity = 0
