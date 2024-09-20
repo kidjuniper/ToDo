@@ -48,12 +48,12 @@
 		A418E9F42C9C1E1900E9A2B9 /* SortingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9F32C9C1E1900E9A2B9 /* SortingCollectionViewCell.swift */; };
 		A418E9F72C9C89D800E9A2B9 /* CollectionViewCellsFacroty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9F62C9C89D800E9A2B9 /* CollectionViewCellsFacroty.swift */; };
 		A418E9FE2C9C8D3300E9A2B9 /* SeparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9FD2C9C8D3300E9A2B9 /* SeparatorCollectionViewCell.swift */; };
-		A418EA012C9CE1AD00E9A2B9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA002C9CE1AD00E9A2B9 /* RxCocoa */; };
-		A418EA032C9CE1AD00E9A2B9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA022C9CE1AD00E9A2B9 /* RxSwift */; };
-		A418EA062C9CE1CA00E9A2B9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA052C9CE1CA00E9A2B9 /* SnapKit */; };
-		A418EA092C9CE1D600E9A2B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA082C9CE1D600E9A2B9 /* Alamofire */; };
-		A418EA0C2C9CE1F900E9A2B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA0B2C9CE1F900E9A2B9 /* Lottie */; };
 		A418EA0E2C9D58B700E9A2B9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EA0D2C9D58B600E9A2B9 /* TextView.swift */; };
+		A418EA1F2C9D720300E9A2B9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA1E2C9D720300E9A2B9 /* SnapKit */; };
+		A418EA222C9D721500E9A2B9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA212C9D721500E9A2B9 /* RxCocoa */; };
+		A418EA242C9D721500E9A2B9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA232C9D721500E9A2B9 /* RxSwift */; };
+		A418EA272C9D721E00E9A2B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA262C9D721E00E9A2B9 /* Alamofire */; };
+		A418EA2A2C9D722400E9A2B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA292C9D722400E9A2B9 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,11 +108,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A418EA0C2C9CE1F900E9A2B9 /* Lottie in Frameworks */,
-				A418EA062C9CE1CA00E9A2B9 /* SnapKit in Frameworks */,
-				A418EA092C9CE1D600E9A2B9 /* Alamofire in Frameworks */,
-				A418EA032C9CE1AD00E9A2B9 /* RxSwift in Frameworks */,
-				A418EA012C9CE1AD00E9A2B9 /* RxCocoa in Frameworks */,
+				A418EA2A2C9D722400E9A2B9 /* Lottie in Frameworks */,
+				A418EA242C9D721500E9A2B9 /* RxSwift in Frameworks */,
+				A418EA272C9D721E00E9A2B9 /* Alamofire in Frameworks */,
+				A418EA222C9D721500E9A2B9 /* RxCocoa in Frameworks */,
+				A418EA1F2C9D720300E9A2B9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,11 +380,11 @@
 			);
 			name = ToDo;
 			packageProductDependencies = (
-				A418EA002C9CE1AD00E9A2B9 /* RxCocoa */,
-				A418EA022C9CE1AD00E9A2B9 /* RxSwift */,
-				A418EA052C9CE1CA00E9A2B9 /* SnapKit */,
-				A418EA082C9CE1D600E9A2B9 /* Alamofire */,
-				A418EA0B2C9CE1F900E9A2B9 /* Lottie */,
+				A418EA1E2C9D720300E9A2B9 /* SnapKit */,
+				A418EA212C9D721500E9A2B9 /* RxCocoa */,
+				A418EA232C9D721500E9A2B9 /* RxSwift */,
+				A418EA262C9D721E00E9A2B9 /* Alamofire */,
+				A418EA292C9D722400E9A2B9 /* Lottie */,
 			);
 			productName = ToDo;
 			productReference = A418E8D32C98DD0900E9A2B9 /* ToDo.app */;
@@ -416,10 +416,10 @@
 			);
 			mainGroup = A418E8CA2C98DD0900E9A2B9;
 			packageReferences = (
-				A418E9FF2C9CE1AD00E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				A418EA042C9CE1CA00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				A418EA072C9CE1D600E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				A418EA0A2C9CE1F900E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A418EA1D2C9D720300E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A418EA252C9D721E00E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A418EA282C9D722400E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A418E8D42C98DD0900E9A2B9 /* Products */;
 			projectDirPath = "";
@@ -718,15 +718,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A418E9FF2C9CE1AD00E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.7.1;
-			};
-		};
-		A418EA042C9CE1CA00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		A418EA1D2C9D720300E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -734,7 +726,15 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		A418EA072C9CE1D600E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		A418EA252C9D721E00E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -742,7 +742,7 @@
 				minimumVersion = 5.9.1;
 			};
 		};
-		A418EA0A2C9CE1F900E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		A418EA282C9D722400E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
@@ -753,29 +753,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A418EA002C9CE1AD00E9A2B9 /* RxCocoa */ = {
+		A418EA1E2C9D720300E9A2B9 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418E9FF2C9CE1AD00E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		A418EA022C9CE1AD00E9A2B9 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A418E9FF2C9CE1AD00E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		A418EA052C9CE1CA00E9A2B9 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A418EA042C9CE1CA00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = A418EA1D2C9D720300E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		A418EA082C9CE1D600E9A2B9 /* Alamofire */ = {
+		A418EA212C9D721500E9A2B9 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EA072C9CE1D600E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		A418EA232C9D721500E9A2B9 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		A418EA262C9D721E00E9A2B9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A418EA252C9D721E00E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		A418EA0B2C9CE1F900E9A2B9 /* Lottie */ = {
+		A418EA292C9D722400E9A2B9 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EA0A2C9CE1F900E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = A418EA282C9D722400E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

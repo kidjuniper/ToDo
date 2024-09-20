@@ -64,7 +64,7 @@ extension ListPresenter: ListPresenterProtocol {
     }
     
     func dataUpdated(data: [TaskModel]) {
-        if data.count != tasks.count { // to avoid useless collection updates
+        if data != tasks { // to avoid useless collection updates
             tasks = data
             view.reloadListCollection()
         }

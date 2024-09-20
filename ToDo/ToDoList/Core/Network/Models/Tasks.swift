@@ -13,7 +13,8 @@ struct Tasks: Codable {
 }
 
 // MARK: - Task
-struct TaskModel: Codable {
+struct TaskModel: Codable,
+                  Equatable {
     @DefaultID
     var id: UUID
     @DefaultTitleString
@@ -43,5 +44,19 @@ struct TaskModel: Codable {
         comment = ""
         startDate = Date()
         endDate = Date()
+    }
+    
+    static func == (lhs: Self,
+                    rhs: Self) -> Bool {
+        if lhs.id == rhs.id,
+           lhs.comment == rhs.comment,
+           lhs.todo == rhs.todo,
+           lhs.startDate == rhs.startDate,
+           lhs.endDate == rhs.endDate {
+            return true
+        }
+        else {
+            return false
+        }
     }
 }
