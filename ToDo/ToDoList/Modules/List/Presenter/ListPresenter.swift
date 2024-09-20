@@ -143,7 +143,7 @@ extension ListPresenter: ListPresenterProtocol {
         
         let editAction = UIAction(title: "Edit",
                                   image: UIImage(systemName: "pencil")) { _ in
-            self.router.presentAddingScreen(withData: self.tasks[tag],
+            self.router.presentAddingScreen(withData: self.returnTasksWithSort()[tag],
                                             withMode: .editing)
         }
         
