@@ -23,12 +23,12 @@ Simplest Task Planner is a minimalistic task management app designed to help use
 Take a look at some screenshots from the app in action:
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="http://p2p.moscow/Simulator1.png" alt="Screenshot1" style="width: 150px; height: auto;"/>
-  <img src="http://p2p.moscow/Simulator5.png" alt="Screenshot1" style="width: 150px; height: auto;"/>
-  <img src="http://p2p.moscow/Simulator3.png" alt="Screenshot1" style="width: 150px; height: auto;"/>
-  <img src="http://p2p.moscow/Simulator2.png" alt="Screenshot1" style="width: 150px; height: auto;"/>
-  <img src="http://p2p.moscow/Simulator4.png" alt="Screenshot1" style="width: 150px; height: auto;"/>
-  <img src="http://p2p.moscow/Simulator6.png" alt="Screenshot1" style="width: 150px; height: auto;"/>
+  <img src="http://p2p.moscow/Simulator1.png" alt="Screenshot1" style="width: 120px; height: auto;"/>
+  <img src="http://p2p.moscow/Simulator5.png" alt="Screenshot1" style="width: 120px; height: auto;"/>
+  <img src="http://p2p.moscow/Simulator3.png" alt="Screenshot1" style="width: 120px; height: auto;"/>
+  <img src="http://p2p.moscow/Simulator2.png" alt="Screenshot1" style="width: 120px; height: auto;"/>
+  <img src="http://p2p.moscow/Simulator4.png" alt="Screenshot1" style="width: 120px; height: auto;"/>
+  <img src="http://p2p.moscow/Simulator6.png" alt="Screenshot1" style="width: 120px; height: auto;"/>
 </div>
 
 ## 🧪 Test Coverage
