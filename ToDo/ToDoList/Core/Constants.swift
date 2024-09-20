@@ -42,6 +42,7 @@ struct K {
     // MARK: - Layout
     
     static let topSpace = UIScreen.main.bounds.height / UIScreen.main.bounds.width > 2 ? 80 : 40
+    static let bottomSpace = UIScreen.main.bounds.height / UIScreen.main.bounds.width > 2 ? 60 : 40
     
     // MARK: - Other
     static let sortingModes = ["All",

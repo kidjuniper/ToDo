@@ -93,7 +93,7 @@ extension ListViewController {
         listCollectionView.snp.makeConstraints { make in
             make.top.equalTo(sortingCollectionView.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview().inset(60)
+            make.bottom.equalToSuperview().inset(K.bottomSpace)
         }
     }
     
