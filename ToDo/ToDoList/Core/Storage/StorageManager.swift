@@ -13,12 +13,12 @@ protocol StorageManagerProtocol {
     var context: NSManagedObjectContext { get }
     var storageRelay: BehaviorRelay<[TaskModel]> { get }
     
-    func createTracker(with tracker: TaskModel)
-    func getAllTrackers() -> [TaskModel]
+    func createTask(with: TaskModel)
+    func getAllTasks() -> [TaskModel]
     func getTasksForToday() -> [TaskModel]
-    func deleteTracker(by id: UUID)
-    func updateTrackerCompletion(by id: UUID)
-    func updateTrackerData(withData newData: TaskModel)
+    func deleteTask(by id: UUID)
+    func updateTaskCompletion(by id: UUID)
+    func updateTaskData(withData newData: TaskModel)
 }
 
 final class StorageManager: StorageManagerProtocol {
@@ -53,16 +53,16 @@ final class StorageManager: StorageManagerProtocol {
     }
     
     // MARK: - Create Methods
-    func createTracker(with tracker: TaskModel) {
-        let trackerEntity = TrackerCoreData(context: context)
-        trackerEntity.id = tracker.id
-        trackerEntity.toDo = tracker.todo
-        trackerEntity.completed = tracker.completed
-        trackerEntity.comment = tracker.comment
-        trackerEntity.startDate = tracker.startDate
-        trackerEntity.endDate = tracker.endDate
+    func createTask(with taskModel: TaskModel) {
+        let taskEntity = TrackerCoreData(context: context)
+        taskEntity.id = taskModel.id
+        taskEntity.toDo = taskModel.todo
+        taskEntity.completed = taskModel.completed
+        taskEntity.comment = taskModel.comment
+        taskEntity.startDate = taskModel.startDate
+        taskEntity.endDate = taskModel.endDate
         saveContext()
-        storageRelay.accept(self.getAllTrackers())
+        storageRelay.accept(self.getAllTasks())
     }
     
     // MARK: - Get Methods
@@ -82,14 +82,14 @@ final class StorageManager: StorageManagerProtocol {
         }
     }
     
-    func getAllTrackers() -> [TaskModel] {
+    func getAllTasks() -> [TaskModel] {
         let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
         
         do {
-            let trackerEntities = try context.fetch(fetchRequest)
-            let tasks = trackerEntities.map { TaskModel(from: $0) }
+            let tasksEntities = try context.fetch(fetchRequest)
+            let tasks = tasksEntities.map { TaskModel(from: $0) }
             storageRelay.accept(tasks)
-            return trackerEntities.map { TaskModel(from: $0) }
+            return tasksEntities.map { TaskModel(from: $0) }
         } catch {
             return []
         }
@@ -105,63 +105,64 @@ final class StorageManager: StorageManagerProtocol {
                                              todayStart as NSDate,
                                              todayEnd as NSDate)
         do {
-            let trackerEntities = try context.fetch(fetchRequest)
-            let tasks = trackerEntities.map { TaskModel(from: $0) }
+            let tasksEntities = try context.fetch(fetchRequest)
+            let tasks = tasksEntities.map { TaskModel(from: $0) }
             storageRelay.accept(tasks)
-            return trackerEntities.map { TaskModel(from: $0) }
+            return tasksEntities.map { TaskModel(from: $0) }
         } catch {
             return []
         }
     }
     
-    func deleteTracker(by id: UUID) {
+    // MARK: - Delete Methods
+    func deleteTask(by id: UUID) {
             let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@",
                                                  id as CVarArg)
             do {
-                let trackerEntities = try context.fetch(fetchRequest)
-                if let trackerEntity = trackerEntities.first {
-                    context.delete(trackerEntity)
+                let tasksEntities = try context.fetch(fetchRequest)
+                if let taskEntity = tasksEntities.first {
+                    context.delete(taskEntity)
                 }
                 saveContext()
-                self.storageRelay.accept(self.getAllTrackers())
+                self.storageRelay.accept(self.getAllTasks())
             } catch {
                 fatalError("Failed to delete task: \(error)")
             }
         }
     
-    func updateTrackerCompletion(by id: UUID) {
+    // MARK: - Update Methods
+    func updateTaskCompletion(by id: UUID) {
         let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@",
                                              id as CVarArg)
         do {
-            let trackerEntities = try context.fetch(fetchRequest)
-            if let trackerEntity = trackerEntities.first {
-                trackerEntity.completed = !trackerEntity.completed
+            let tasksEntities = try context.fetch(fetchRequest)
+            if let taskEntity = tasksEntities.first {
+                taskEntity.completed = !taskEntity.completed
             }
             saveContext()
-            self.storageRelay.accept(self.getAllTrackers())
+            self.storageRelay.accept(self.getAllTasks())
         } catch {
             fatalError("Failed to update tracker completion: \(error)")
         }
     }
     
-    func updateTrackerData(withData newData: TaskModel) {
+    func updateTaskData(withData newData: TaskModel) {
         let id = newData.id
         let fetchRequest: NSFetchRequest<TrackerCoreData> = TrackerCoreData.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@",
                                              id as CVarArg)
-        
         do {
-            let trackerEntities = try context.fetch(fetchRequest)
-            if let trackerEntity = trackerEntities.first {
-                trackerEntity.toDo = newData.todo
-                trackerEntity.comment = newData.comment
-                trackerEntity.startDate = newData.startDate
-                trackerEntity.endDate = newData.endDate
+            let tasksEntities = try context.fetch(fetchRequest)
+            if let taskEntity = tasksEntities.first {
+                taskEntity.toDo = newData.todo
+                taskEntity.comment = newData.comment
+                taskEntity.startDate = newData.startDate
+                taskEntity.endDate = newData.endDate
             }
             saveContext()
-            storageRelay.accept(self.getAllTrackers())
+            storageRelay.accept(self.getAllTasks())
         } catch {
             fatalError("Failed to update tracker completion: \(error)")
         }

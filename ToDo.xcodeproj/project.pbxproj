@@ -53,6 +53,7 @@
 		A418EA062C9CE1CA00E9A2B9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA052C9CE1CA00E9A2B9 /* SnapKit */; };
 		A418EA092C9CE1D600E9A2B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA082C9CE1D600E9A2B9 /* Alamofire */; };
 		A418EA0C2C9CE1F900E9A2B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA0B2C9CE1F900E9A2B9 /* Lottie */; };
+		A418EA0E2C9D58B700E9A2B9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EA0D2C9D58B600E9A2B9 /* TextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		A418E9F32C9C1E1900E9A2B9 /* SortingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A418E9F62C9C89D800E9A2B9 /* CollectionViewCellsFacroty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellsFacroty.swift; sourceTree = "<group>"; };
 		A418E9FD2C9C8D3300E9A2B9 /* SeparatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		A418EA0D2C9D58B600E9A2B9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,11 +161,11 @@
 		A418E9022C98DD6200E9A2B9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				A418E9002C98DD6200E9A2B9 /* Constants.swift */,
+				A418E8FF2C98DD6200E9A2B9 /* Managers */,
+				A418E95C2C98ED3F00E9A2B9 /* Network */,
 				A418E9E42C9B41C600E9A2B9 /* Storage */,
 				A418E9962C99C66500E9A2B9 /* Extensions */,
-				A418E95C2C98ED3F00E9A2B9 /* Network */,
-				A418E8FF2C98DD6200E9A2B9 /* Managers */,
-				A418E9002C98DD6200E9A2B9 /* Constants.swift */,
 			);
 			name = Core;
 			path = ToDoList/Core;
@@ -184,9 +186,9 @@
 		A418E9092C98DD6200E9A2B9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A418E9C92C9B18E800E9A2B9 /* Adding */,
-				A418E98B2C99C0D000E9A2B9 /* List */,
 				A418E9082C98DD6200E9A2B9 /* Loading */,
+				A418E98B2C99C0D000E9A2B9 /* List */,
+				A418E9C92C9B18E800E9A2B9 /* Adding */,
 			);
 			name = Modules;
 			path = ToDoList/Modules;
@@ -295,6 +297,7 @@
 			children = (
 				A418E9CC2C9B196B00E9A2B9 /* AddingViewController.swift */,
 				A418E9DA2C9B1E3500E9A2B9 /* TextField.swift */,
+				A418EA0D2C9D58B600E9A2B9 /* TextView.swift */,
 				A418E9DE2C9B256600E9A2B9 /* TimeIntervalPicker.swift */,
 			);
 			path = VIews;
@@ -309,12 +312,12 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		A418E9F52C9C89B700E9A2B9 /* Factories */ = {
+		A418E9F52C9C89B700E9A2B9 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				A418E9F62C9C89D800E9A2B9 /* CollectionViewCellsFacroty.swift */,
 			);
-			path = Factories;
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		A418E9F82C9C8A4900E9A2B9 /* Cells */ = {
@@ -323,6 +326,7 @@
 				A418E9A22C99E71500E9A2B9 /* TaskCollectionViewCell.swift */,
 				A418E9F32C9C1E1900E9A2B9 /* SortingCollectionViewCell.swift */,
 				A418E9FD2C9C8D3300E9A2B9 /* SeparatorCollectionViewCell.swift */,
+				A418E9F52C9C89B700E9A2B9 /* Factory */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -339,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				A418E9902C99C10100E9A2B9 /* ListPresenter.swift */,
-				A418E9F52C9C89B700E9A2B9 /* Factories */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				A418E9DB2C9B1E3500E9A2B9 /* TextField.swift in Sources */,
 				A418E9CD2C9B196B00E9A2B9 /* AddingViewController.swift in Sources */,
 				A418E9302C98DD6300E9A2B9 /* Constants.swift in Sources */,
+				A418EA0E2C9D58B700E9A2B9 /* TextView.swift in Sources */,
 				A418E9DD2C9B20DE00E9A2B9 /* UIViewController + setUpBackground.swift in Sources */,
 				A418E9812C98ED4700E9A2B9 /* DummyRoute.swift in Sources */,
 				A418E92E2C98DD6300E9A2B9 /* DummyAPIManager.swift in Sources */,

@@ -56,7 +56,7 @@ extension LoadingViewController {
         animationView.play()
     }
     
-    func setUpWhiteBackground() {
+    private func setUpWhiteBackground() {
         view.backgroundColor = .white
     }
 }

@@ -18,18 +18,24 @@ protocol ListInteractorProtocol {
     func requestData(todays: Bool) -> [TaskModel] 
 }
 
-final class ListInteractor: ListInteractorProtocol {
+final class ListInteractor {
     weak var presenter: ListPresenterProtocol?
     var storageManager: StorageManagerProtocol
+    
+    // MARK: - Private Properties
     private let disposeBag = DisposeBag()
     
+    // MARK: - Initializer
     init(presenter: ListPresenterProtocol,
          storageManager: StorageManagerProtocol) {
         self.presenter = presenter
         self.storageManager = storageManager
         setupBindings()
     }
-    
+}
+
+// MARK: - ListInteractorProtocol extension
+extension ListInteractor: ListInteractorProtocol {
     private func setupBindings() {
         storageManager.storageRelay
             .asObservable()
@@ -42,13 +48,13 @@ final class ListInteractor: ListInteractorProtocol {
     }
     
     func deleteTracker(by id: UUID) {
-        storageManager.deleteTracker(by: id)
+        storageManager.deleteTask(by: id)
     }
     
     func changeStatus(by id: UUID,
                       today: Bool) {
-        storageManager.updateTrackerCompletion(by: id)
-        presenter?.dataUpdated(data: today ? storageManager.getTasksForToday() : storageManager.getAllTrackers())
+        storageManager.updateTaskCompletion(by: id)
+        presenter?.dataUpdated(data: today ? storageManager.getTasksForToday() : storageManager.getAllTasks())
     }
     
     func requestData(todays: Bool) -> [TaskModel] {
@@ -56,7 +62,7 @@ final class ListInteractor: ListInteractorProtocol {
             return storageManager.getTasksForToday()
         }
         else {
-            return storageManager.getAllTrackers()
+            return storageManager.getAllTasks()
         }
     }
 }

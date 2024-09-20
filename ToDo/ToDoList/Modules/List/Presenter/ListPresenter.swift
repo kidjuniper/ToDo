@@ -11,11 +11,11 @@ import UIKit
 protocol ListPresenterProtocol: AnyObject,
                                 UICollectionViewDataSource {
     func viewDidLoad()
-    func tappedCell(indexPath: IndexPath)
     func addNewTapped()
-    func dataUpdated(data: [TaskModel])
+    func dataUpdated(data: [TaskModel]) // ! called via rx !
+    func tappedCell(indexPath: IndexPath)
     func selectedSorting(indexPath: IndexPath)
-    func changeMode()
+    func changeMode() // todays / all tasks
     
     var view: ListViewProtocol! { get set }
     var interactor: ListInteractorProtocol! { get set }
@@ -23,8 +23,7 @@ protocol ListPresenterProtocol: AnyObject,
 }
 
 final class ListPresenter: NSObject,
-                           UIContextMenuInteractionDelegate,
-                           ListPresenterProtocol {
+                           UIContextMenuInteractionDelegate {
     var view: ListViewProtocol!
     var interactor: ListInteractorProtocol!
     var router: ListRouterProtocol!
@@ -41,6 +40,7 @@ final class ListPresenter: NSObject,
     private var selectedSortringModeIndex = 0
     private var today = false
     
+    // MARK: - Initializer
     init(view: ListViewProtocol? = nil,
          interactor: ListInteractorProtocol? = nil,
          router: ListRouterProtocol? = nil,
@@ -50,7 +50,10 @@ final class ListPresenter: NSObject,
         self.router = router
         self.tasks = data
     }
-    
+}
+
+// MARK: - ListPresenterProtocol extension
+extension ListPresenter: ListPresenterProtocol {
     func viewDidLoad() {
         view.reloadListCollection()
     }
@@ -61,33 +64,20 @@ final class ListPresenter: NSObject,
     }
     
     func dataUpdated(data: [TaskModel]) {
-        if data.count != tasks.count {
+        if data.count != tasks.count { // to avoid useless collection updates
             tasks = data
             view.reloadListCollection()
         }
-        tasks = data
-    }
-    
-    func tappedCell(indexPath: IndexPath) {
-        let index = indexPath.row
-        let id = returnTasksWithSort()[index].id
-        let completed = !returnTasksWithSort()[index].completed
-        view.animateCell(on: indexPath,
-                         completedSide: completed)
-        view.reloadSortingModeCollection()
-        switch selectedSortringModeIndex {
-        case 2:
-            view.deleteTask(on: indexPath)
-        case 3:
-            view.deleteTask(on: indexPath)
-        default:
-            break
+        else {
+            tasks = data
         }
-        interactor.changeStatus(by: id,
-                                today: today)
     }
     
     func selectedSorting(indexPath: IndexPath) {
+        applySelectedSorting(indexPath: indexPath)
+    }
+    
+    private func applySelectedSorting(indexPath: IndexPath) {
         if selectedSortringModeIndex != indexPath.row,
            selectedSortringModeIndex != 1 {
             selectedSortringModeIndex = indexPath.row
@@ -105,6 +95,33 @@ final class ListPresenter: NSObject,
         else {
             view.setUpAsAllTasks()
         }
+    }
+    
+    func tappedCell(indexPath: IndexPath) {
+        let index = indexPath.row
+        let id = returnTasksWithSort()[index].id
+        let completed = !returnTasksWithSort()[index].completed
+        view.animateCell(on: indexPath,
+                         completedSide: completed)
+        view.reloadSortingModeCollection() // counters should be updated
+        deleteChangedStatusCellIfNeeded(indexPath: indexPath)
+        interactor.changeStatus(by: id,
+                                today: today)
+    }
+    
+    private func deleteChangedStatusCellIfNeeded(indexPath: IndexPath) {
+        switch selectedSortringModeIndex {
+        case 2:
+            view.deleteTask(on: indexPath)
+        case 3:
+            view.deleteTask(on: indexPath)
+        default:
+            break
+        }
+    }
+    
+    private func updateStatusForCell(indexPath: IndexPath) {
+        
     }
     
     private func returnTasksWithSort() -> [TaskModel] {
@@ -156,58 +173,56 @@ final class ListPresenter: NSObject,
         }
     }
     
+    private func deleteTracker(by id: UUID) {
+        interactor.deleteTracker(by: id)
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         switch collectionView.tag {
-        case K.listCollectionViewTag: returnTasksWithSort().count
+        case K.tags.listCollectionViewTag.rawValue: returnTasksWithSort().count
         default:
-            4
+            K.sortingModes.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView.tag {
-        case K.listCollectionViewTag:
+        case K.tags.listCollectionViewTag.rawValue:
             let data = returnTasksWithSort()[indexPath.row]
             let cell = CollectionViewCellsFacroty.makeTaskCollectionViewCell(colletionView: collectionView,
-                                                                  indexPath: indexPath,
-                                                                  cellData: data)
+                                                                             indexPath: indexPath,
+                                                                             cellData: data)
             cell.tag = indexPath.row
             let interaction = UIContextMenuInteraction(delegate: self)
             cell.addInteraction(interaction)
             return cell
             
-        case K.sortingCollectionViewTag:
+        case K.tags.sortingCollectionViewTag.rawValue:
             let isSelected = indexPath.row == selectedSortringModeIndex
             var count = 0
-            var dataId = indexPath.row
+            var nameId = indexPath.row
             switch indexPath.row {
             case 0:
                 count = tasks.count
             case 2:
                 count = tasksOpened.count
-                dataId -= 1
             case 3:
                 count = tasksClosed.count
-                dataId -= 1
             default:
                 break
             }
-            let data = SortingCellModel(title: K.sortingModes[dataId],
+            let data = SortingCellModel(title: K.sortingModes[nameId],
                                         count: count,
                                         isSelected: isSelected)
             let cell = CollectionViewCellsFacroty.makeSortingCollectionViewCell(colletionView: collectionView,
-                                                                                 indexPath: indexPath,
-                                                                                 cellData: data)
+                                                                                indexPath: indexPath,
+                                                                                cellData: data)
             return cell
             
         default:
             return UICollectionViewCell()
         }
-    }
-    
-    private func deleteTracker(by id: UUID) {
-        interactor.deleteTracker(by: id)
     }
 }
