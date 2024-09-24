@@ -34,13 +34,7 @@ final class LoadingPresenter {
 // MARK: - LoadingPresenterProtocol extension
 extension LoadingPresenter: LoadingPresenterProtocol {
     func viewDidLoad() {
-        let isFirst = interactor.checkIfItFirstLaunch()
-        if isFirst {
-            interactor.requestInitialData()
-        }
-        else {
-            interactor.requestSavedData()
-        }
+        interactor.requestData()
     }
     
     func dataFetched(data: [TaskModel]) {

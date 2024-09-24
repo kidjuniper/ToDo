@@ -39,12 +39,14 @@ extension LoadingRouter: LoadingRouterProtocol {
     }
     
     static func createModule(userDefaultsManager: UserDefaultManagerProtocol,
-                             storageManager: StorageManagerProtocol) -> LoadingViewProtocol {
+                             storageManager: StorageManagerProtocol,
+                             dummyAPIManager: DummyjsonAPIManagerProtocol) -> LoadingViewProtocol {
         let view = LoadingViewController()
         let configurator = LoadingConfigurator()
         configurator.configure(view: view,
                                userDefaultsManager: userDefaultsManager,
-                               storageManager: storageManager)
+                               storageManager: storageManager,
+                               dummyAPIManager: dummyAPIManager)
         return view
     }
 }

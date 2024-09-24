@@ -10,6 +10,10 @@ import Foundation
 struct Tasks: Codable {
     @DefaultEmptyArray
     var todos: [TaskModel]
+    
+    init(todos: [TaskModel]) {
+        self.todos = todos
+    }
 }
 
 // MARK: - Task
@@ -28,6 +32,11 @@ struct TaskModel: Codable,
     @DefaultEndDate
     var endDate: Date
     
+    // for testing
+    @DefaultTaskModelType
+    var type: TaskModelType
+    
+    
     init(from task: TrackerCoreData) {
         self.id = task.id ?? UUID()
         self.todo = task.toDo ?? ""
@@ -35,19 +44,22 @@ struct TaskModel: Codable,
         self.startDate = task.startDate ?? Date()
         self.endDate = task.endDate ?? Date()
         self.completed = task.completed
+        self.type = .organic
     }
     
-    init() {
+    init(_ withMode: TaskModelType = .organic) {
         id = UUID()
         todo = ""
         completed = false
         comment = ""
         startDate = Date()
         endDate = Date()
+        type = withMode
     }
     
     static func == (lhs: Self,
                     rhs: Self) -> Bool {
+        // althought 'completed' properties are different, models are the same
         if lhs.id == rhs.id,
            lhs.comment == rhs.comment,
            lhs.todo == rhs.todo,
@@ -55,8 +67,32 @@ struct TaskModel: Codable,
            lhs.endDate == rhs.endDate {
             return true
         }
+        else if lhs.type == .apiMock,
+           rhs.type == .apiMock {
+            return true
+        }
+        else if lhs.type == .storageMock,
+           rhs.type == .storageMock {
+            return true
+        }
         else {
             return false
         }
     }
+    
+    static var apiMockList: [TaskModel] {
+        var mockTask = TaskModel(.apiMock)
+        return [mockTask]
+    }
+    
+    static var storageMockList: [TaskModel] {
+        var mockTask = TaskModel(.storageMock)
+        return [mockTask]
+    }
+}
+
+public enum TaskModelType: Codable {
+    case organic
+    case apiMock
+    case storageMock
 }

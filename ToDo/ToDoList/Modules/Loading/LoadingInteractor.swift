@@ -8,33 +8,43 @@
 import Foundation
 
 protocol LoadingInteractorProtocol {
-    func checkIfItFirstLaunch() -> Bool
-    func requestInitialData()
-    func requestSavedData()
+    func requestData()
     
-    var presenter: LoadingPresenterProtocol? { get set }
+    var presenter: LoadingPresenterProtocol! { get set }
 }
 
 final class LoadingInteractor {
-    weak var presenter: LoadingPresenterProtocol?
+    weak var presenter: LoadingPresenterProtocol!
     
     // MARK: - Private Properties
     private var userDefaultsManager: UserDefaultManagerProtocol
     private var storageManager: StorageManagerProtocol
+    private var dummyAPIManager: DummyjsonAPIManagerProtocol
     
     // MARK: - Initializer
     init(presenter: LoadingPresenterProtocol? = nil,
          userDefaultsManager: UserDefaultManagerProtocol,
-         storageManager: StorageManagerProtocol) {
+         storageManager: StorageManagerProtocol,
+         dummyAPIManager: DummyjsonAPIManagerProtocol) {
         self.presenter = presenter
         self.userDefaultsManager = userDefaultsManager
         self.storageManager = storageManager
+        self.dummyAPIManager = dummyAPIManager
     }
 }
 
 // MARK: - LoadingInteractorProtocol extension
 extension LoadingInteractor: LoadingInteractorProtocol {
-    func checkIfItFirstLaunch() -> Bool {
+    func requestData() {
+        if checkIfItFirstLaunch() {
+            requestInitialData()
+        }
+        else {
+            requestSavedData()
+        }
+    }
+    
+    private func checkIfItFirstLaunch() -> Bool {
         let isFirst = !(userDefaultsManager.fetchObject(type: Bool.self,
                                          for: .hasAlreadyBeenStarted) ?? false)
         userDefaultsManager.saveObject(true,
@@ -42,8 +52,8 @@ extension LoadingInteractor: LoadingInteractorProtocol {
         return isFirst
     }
     
-    func requestInitialData() {
-        DummyjsonAPIManager().requestData { result in
+    private func requestInitialData() {
+        dummyAPIManager.requestData { result in
             switch result {
             case .success(let tasks):
                 tasks.todos.forEach { model in
@@ -56,7 +66,7 @@ extension LoadingInteractor: LoadingInteractorProtocol {
         }
     }
     
-    func requestSavedData() {
+    private func requestSavedData() {
         self.presenter?.dataFetched(data: storageManager.getAllTasks())
     }
 }
