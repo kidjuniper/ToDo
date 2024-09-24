@@ -10,7 +10,6 @@ import RxSwift
 import RxRelay
 
 protocol StorageManagerProtocol {
-    var context: NSManagedObjectContext { get }
     var storageRelay: BehaviorRelay<[TaskModel]> { get }
     
     func createTask(with: TaskModel)

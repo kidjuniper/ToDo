@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol ListInteractorProtocol {
-    var presenter: ListPresenterProtocol? { get set }
+    var presenter: ListPresenterProtocol! { get set }
     var storageManager: StorageManagerProtocol { get set }
     
     func deleteTracker(by id: UUID)
@@ -19,7 +19,7 @@ protocol ListInteractorProtocol {
 }
 
 final class ListInteractor {
-    weak var presenter: ListPresenterProtocol?
+    weak var presenter: ListPresenterProtocol!
     var storageManager: StorageManagerProtocol
     
     // MARK: - Private Properties

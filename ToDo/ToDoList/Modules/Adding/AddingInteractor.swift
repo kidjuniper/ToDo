@@ -8,13 +8,13 @@
 import Foundation
 
 protocol AddingInteractorProtocol {
-    var presenter: AddingPresenterProtocol? { get set }
+    var presenter: AddingPresenterProtocol! { get set }
     
     func save(task: TaskModel)
 }
 
 final class AddingInteractor: AddingInteractorProtocol {
-    weak var presenter: AddingPresenterProtocol?
+    weak var presenter: AddingPresenterProtocol!
     
     // MARK: - Private Properties
     private var storageManager: StorageManagerProtocol

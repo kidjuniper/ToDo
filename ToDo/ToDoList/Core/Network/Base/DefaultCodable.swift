@@ -129,4 +129,10 @@ public struct DefaultIDStrategy: DefaultCodableStrategy {
     public static var defaultValue: UUID { return UUID() }
 }
 public typealias DefaultID = DefaultCodable<DefaultIDStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
+///
+
+public struct DefaultTaskModelTypeTypeStrategy: DefaultCodableStrategy {
+    public static var defaultValue: TaskModelType { return .organic}
+}
+public typealias DefaultTaskModelType = DefaultCodable<DefaultTaskModelTypeTypeStrategy> /// `@DefaultIntStrategy` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
 
