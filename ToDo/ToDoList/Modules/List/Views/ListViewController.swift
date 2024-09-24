@@ -116,7 +116,7 @@ extension ListViewController {
 // MARK: - ListViewProtocol extension
 extension ListViewController: ListViewProtocol {
     func setUpAsAllTasks() {
-        topTodayLabel.text = "All tasks"
+        topTodayLabel.text = "All Tasks"
         bottomTodayLabel.text = "On one page"
     }
     
@@ -196,7 +196,6 @@ extension ListViewController: ListViewProtocol {
             print("Unknown collection view")
             return UIEdgeInsets.zero
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -232,7 +231,7 @@ extension ListViewController {
         let label = UILabel()
         label.font = K.boldFont
         label.textColor = .black
-        label.text = "All Task"
+        label.text = "All Tasks"
         return label
     }
     
