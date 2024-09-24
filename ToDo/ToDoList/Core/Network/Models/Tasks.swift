@@ -21,7 +21,7 @@ struct TaskModel: Codable,
     var todo: String
     @DefaultFalse
     var completed: Bool
-    @DefaultCommentString
+    @DefaultEmptyString
     var comment: String
     @DefaultStartDate
     var startDate: Date
