@@ -141,11 +141,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A418EA2A2C9D722400E9A2B9 /* Lottie in Frameworks */,
-				A418EA242C9D721500E9A2B9 /* RxSwift in Frameworks */,
-				A418EA272C9D721E00E9A2B9 /* Alamofire in Frameworks */,
-				A418EA222C9D721500E9A2B9 /* RxCocoa in Frameworks */,
-				A418EA1F2C9D720300E9A2B9 /* SnapKit in Frameworks */,
+				A418EB362CA32D9200E9A2B9 /* RxCocoa in Frameworks */,
+				A418EB302CA32D8200E9A2B9 /* Alamofire in Frameworks */,
+				A418EB382CA32D9200E9A2B9 /* RxSwift in Frameworks */,
+				A418EB332CA32D8800E9A2B9 /* Lottie in Frameworks */,
+				A418EB3B2CA32D9B00E9A2B9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,11 +512,11 @@
 			);
 			name = ToDo;
 			packageProductDependencies = (
-				A418EA1E2C9D720300E9A2B9 /* SnapKit */,
-				A418EA212C9D721500E9A2B9 /* RxCocoa */,
-				A418EA232C9D721500E9A2B9 /* RxSwift */,
-				A418EA262C9D721E00E9A2B9 /* Alamofire */,
-				A418EA292C9D722400E9A2B9 /* Lottie */,
+				A418EB2F2CA32D8200E9A2B9 /* Alamofire */,
+				A418EB322CA32D8800E9A2B9 /* Lottie */,
+				A418EB352CA32D9200E9A2B9 /* RxCocoa */,
+				A418EB372CA32D9200E9A2B9 /* RxSwift */,
+				A418EB3A2CA32D9B00E9A2B9 /* SnapKit */,
 			);
 			productName = ToDo;
 			productReference = A418E8D32C98DD0900E9A2B9 /* ToDo.app */;
@@ -570,10 +570,10 @@
 			);
 			mainGroup = A418E8CA2C98DD0900E9A2B9;
 			packageReferences = (
-				A418EA1D2C9D720300E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				A418EA252C9D721E00E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				A418EA282C9D722400E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A418EB2E2CA32D8200E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A418EB312CA32D8800E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A418EB392CA32D9B00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = A418E8D42C98DD0900E9A2B9 /* Products */;
 			projectDirPath = "";
@@ -959,23 +959,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A418EA1D2C9D720300E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.7.1;
-			};
-		};
-		A418EA252C9D721E00E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		A418EB2E2CA32D8200E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -983,7 +967,7 @@
 				minimumVersion = 5.9.1;
 			};
 		};
-		A418EA282C9D722400E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		A418EB312CA32D8800E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
@@ -991,33 +975,49 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		A418EB392CA32D9B00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A418EA1E2C9D720300E9A2B9 /* SnapKit */ = {
+		A418EB2F2CA32D8200E9A2B9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EA1D2C9D720300E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		A418EA212C9D721500E9A2B9 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		A418EA232C9D721500E9A2B9 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A418EA202C9D721500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		A418EA262C9D721E00E9A2B9 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A418EA252C9D721E00E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = A418EB2E2CA32D8200E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		A418EA292C9D722400E9A2B9 /* Lottie */ = {
+		A418EB322CA32D8800E9A2B9 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EA282C9D722400E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = A418EB312CA32D8800E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		A418EB352CA32D9200E9A2B9 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		A418EB372CA32D9200E9A2B9 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		A418EB3A2CA32D9B00E9A2B9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A418EB392CA32D9B00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
