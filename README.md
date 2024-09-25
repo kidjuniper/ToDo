@@ -32,4 +32,4 @@ Take a look at some screenshots from the app in action:
 </div>
 
 ## 🧪 Test Coverage
-Waiting soon
+Loading module tests
