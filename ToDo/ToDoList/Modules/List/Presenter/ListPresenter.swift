@@ -202,7 +202,7 @@ extension ListPresenter: ListPresenterProtocol {
         case K.tags.sortingCollectionViewTag.rawValue:
             let isSelected = indexPath.row == selectedSortringModeIndex
             var count = 0
-            var nameId = indexPath.row
+            let nameId = indexPath.row
             switch indexPath.row {
             case 0:
                 count = tasks.count

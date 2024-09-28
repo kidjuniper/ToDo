@@ -25,7 +25,7 @@ struct TaskModel: Codable,
     var todo: String
     @DefaultFalse
     var completed: Bool
-    @DefaultCommentString
+    @DefaultEmptyString
     var comment: String
     @DefaultStartDate
     var startDate: Date
@@ -81,12 +81,12 @@ struct TaskModel: Codable,
     }
     
     static var apiMockList: [TaskModel] {
-        var mockTask = TaskModel(.apiMock)
+        let mockTask = TaskModel(.apiMock)
         return [mockTask]
     }
     
     static var storageMockList: [TaskModel] {
-        var mockTask = TaskModel(.storageMock)
+        let mockTask = TaskModel(.storageMock)
         return [mockTask]
     }
 }

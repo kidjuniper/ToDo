@@ -76,11 +76,6 @@ public struct DefaultEmptyStringStrategy: DefaultCodableStrategy {
 }
 public typealias DefaultEmptyString = DefaultCodable<DefaultEmptyStringStrategy> /// `@DefaultEmptyString` decodes String and returns an empty string instead of nil if the Decoder is unable to decode the container.
 
-public struct DefaultCommentStringStrategy: DefaultCodableStrategy {
-    public static var defaultValue: String { return K.commentStringTemplate }
-}
-public typealias DefaultCommentString = DefaultCodable<DefaultCommentStringStrategy> /// `@DefaultCommentString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
-
 public struct DefaultTitleStringStrategy: DefaultCodableStrategy {
     public static var defaultValue: String { return K.titleStringTemplate }
 }
@@ -129,7 +124,6 @@ public struct DefaultIDStrategy: DefaultCodableStrategy {
     public static var defaultValue: UUID { return UUID() }
 }
 public typealias DefaultID = DefaultCodable<DefaultIDStrategy> /// `@DefaultTitleString` decodes String and returns a template  string instead of nil if the Decoder is unable to decode the container.
-///
 
 public struct DefaultTaskModelTypeTypeStrategy: DefaultCodableStrategy {
     public static var defaultValue: TaskModelType { return .organic}

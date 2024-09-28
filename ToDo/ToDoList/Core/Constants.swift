@@ -37,8 +37,6 @@ struct K {
     enum tags: Int {
         case listCollectionViewTag = 70001
         case sortingCollectionViewTag = 70002
-        case theMockStorageDataTag = 20001
-        case theMockAPIDataTag = 20002
     }
     
     // MARK: - Layout
