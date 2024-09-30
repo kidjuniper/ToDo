@@ -81,12 +81,12 @@ struct TaskModel: Codable,
     }
     
     static var apiMockList: [TaskModel] {
-        var mockTask = TaskModel(.apiMock)
+        let mockTask = TaskModel(.apiMock)
         return [mockTask]
     }
     
     static var storageMockList: [TaskModel] {
-        var mockTask = TaskModel(.storageMock)
+        let mockTask = TaskModel(.storageMock)
         return [mockTask]
     }
 }

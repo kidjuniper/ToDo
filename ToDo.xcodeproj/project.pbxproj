@@ -49,11 +49,6 @@
 		A418E9F72C9C89D800E9A2B9 /* CollectionViewCellsFacroty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9F62C9C89D800E9A2B9 /* CollectionViewCellsFacroty.swift */; };
 		A418E9FE2C9C8D3300E9A2B9 /* SeparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418E9FD2C9C8D3300E9A2B9 /* SeparatorCollectionViewCell.swift */; };
 		A418EA0E2C9D58B700E9A2B9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EA0D2C9D58B600E9A2B9 /* TextView.swift */; };
-		A418EA1F2C9D720300E9A2B9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA1E2C9D720300E9A2B9 /* SnapKit */; };
-		A418EA222C9D721500E9A2B9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA212C9D721500E9A2B9 /* RxCocoa */; };
-		A418EA242C9D721500E9A2B9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA232C9D721500E9A2B9 /* RxSwift */; };
-		A418EA272C9D721E00E9A2B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA262C9D721E00E9A2B9 /* Alamofire */; };
-		A418EA2A2C9D722400E9A2B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A418EA292C9D722400E9A2B9 /* Lottie */; };
 		A418EAED2CA2D64D00E9A2B9 /* LoadingPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EAEC2CA2D64D00E9A2B9 /* LoadingPresenterTests.swift */; };
 		A418EAF62CA2E1C500E9A2B9 /* XCTest+ExpectToEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EAF52CA2E1C500E9A2B9 /* XCTest+ExpectToEventually.swift */; };
 		A418EB002CA2E5FA00E9A2B9 /* LoadingRouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EAFE2CA2E51C00E9A2B9 /* LoadingRouterSpy.swift */; };
@@ -65,6 +60,15 @@
 		A418EB102CA2FED500E9A2B9 /* DummyAPIManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EB0F2CA2FED500E9A2B9 /* DummyAPIManagerMock.swift */; };
 		A418EB152CA308DE00E9A2B9 /* TaggedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EB142CA308DE00E9A2B9 /* TaggedArray.swift */; };
 		A418EB172CA3229100E9A2B9 /* UserDefaultsManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A418EB162CA3229100E9A2B9 /* UserDefaultsManagerMock.swift */; };
+		A418EB562CA32FD100E9A2B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A418EB552CA32FD100E9A2B9 /* Alamofire */; };
+		A418EB592CA32FD900E9A2B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A418EB582CA32FD900E9A2B9 /* Lottie */; };
+		A418EB5C2CA32FE500E9A2B9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A418EB5B2CA32FE500E9A2B9 /* RxCocoa */; };
+		A418EB5E2CA32FE500E9A2B9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A418EB5D2CA32FE500E9A2B9 /* RxSwift */; };
+		A418EB612CA32FEC00E9A2B9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A418EB602CA32FEC00E9A2B9 /* SnapKit */; };
+		A45C024D2CA868FA003F2071 /* ListViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C024C2CA868FA003F2071 /* ListViewControllerSpy.swift */; };
+		A45C024F2CA86A1B003F2071 /* ListPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C024E2CA86A1B003F2071 /* ListPresenterSpy.swift */; };
+		A45C02512CA86B2E003F2071 /* ListInteractorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C02502CA86B2E003F2071 /* ListInteractorSpy.swift */; };
+		A45C02532CA86C2F003F2071 /* ListRouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C02522CA86C2F003F2071 /* ListRouterSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +138,10 @@
 		A418EB0F2CA2FED500E9A2B9 /* DummyAPIManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyAPIManagerMock.swift; sourceTree = "<group>"; };
 		A418EB142CA308DE00E9A2B9 /* TaggedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedArray.swift; sourceTree = "<group>"; };
 		A418EB162CA3229100E9A2B9 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
+		A45C024C2CA868FA003F2071 /* ListViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerSpy.swift; sourceTree = "<group>"; };
+		A45C024E2CA86A1B003F2071 /* ListPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenterSpy.swift; sourceTree = "<group>"; };
+		A45C02502CA86B2E003F2071 /* ListInteractorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractorSpy.swift; sourceTree = "<group>"; };
+		A45C02522CA86C2F003F2071 /* ListRouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRouterSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,11 +149,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A418EB362CA32D9200E9A2B9 /* RxCocoa in Frameworks */,
-				A418EB302CA32D8200E9A2B9 /* Alamofire in Frameworks */,
-				A418EB382CA32D9200E9A2B9 /* RxSwift in Frameworks */,
-				A418EB332CA32D8800E9A2B9 /* Lottie in Frameworks */,
-				A418EB3B2CA32D9B00E9A2B9 /* SnapKit in Frameworks */,
+				A418EB5C2CA32FE500E9A2B9 /* RxCocoa in Frameworks */,
+				A418EB562CA32FD100E9A2B9 /* Alamofire in Frameworks */,
+				A418EB5E2CA32FE500E9A2B9 /* RxSwift in Frameworks */,
+				A418EB592CA32FD900E9A2B9 /* Lottie in Frameworks */,
+				A418EB612CA32FEC00E9A2B9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +445,7 @@
 		A418EAE92CA2D60A00E9A2B9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A45C024A2CA868D7003F2071 /* List */,
 				A418EAEA2CA2D61300E9A2B9 /* Loading */,
 			);
 			path = Modules;
@@ -493,6 +502,25 @@
 				A418EB142CA308DE00E9A2B9 /* TaggedArray.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		A45C024A2CA868D7003F2071 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				A45C024B2CA868ED003F2071 /* Spies */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		A45C024B2CA868ED003F2071 /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				A45C024C2CA868FA003F2071 /* ListViewControllerSpy.swift */,
+				A45C024E2CA86A1B003F2071 /* ListPresenterSpy.swift */,
+				A45C02502CA86B2E003F2071 /* ListInteractorSpy.swift */,
+				A45C02522CA86C2F003F2071 /* ListRouterSpy.swift */,
+			);
+			path = Spies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,15 +685,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A418EB002CA2E5FA00E9A2B9 /* LoadingRouterSpy.swift in Sources */,
+				A45C024D2CA868FA003F2071 /* ListViewControllerSpy.swift in Sources */,
 				A418EB042CA2E65E00E9A2B9 /* LoadingInteractorTests.swift in Sources */,
+				A45C02512CA86B2E003F2071 /* ListInteractorSpy.swift in Sources */,
 				A418EB022CA2E5FA00E9A2B9 /* LoadingViewControllerSpy.swift in Sources */,
 				A418EB012CA2E5FA00E9A2B9 /* LoadingInteractorSpy.swift in Sources */,
+				A45C02532CA86C2F003F2071 /* ListRouterSpy.swift in Sources */,
 				A418EB172CA3229100E9A2B9 /* UserDefaultsManagerMock.swift in Sources */,
 				A418EB0E2CA2F73100E9A2B9 /* StorageManagerMock.swift in Sources */,
 				A418EAED2CA2D64D00E9A2B9 /* LoadingPresenterTests.swift in Sources */,
 				A418EB072CA2E9A200E9A2B9 /* LoadingPresenterSpy.swift in Sources */,
 				A418EAF62CA2E1C500E9A2B9 /* XCTest+ExpectToEventually.swift in Sources */,
 				A418EB102CA2FED500E9A2B9 /* DummyAPIManagerMock.swift in Sources */,
+				A45C024F2CA86A1B003F2071 /* ListPresenterSpy.swift in Sources */,
 				A418EB152CA308DE00E9A2B9 /* TaggedArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,7 +991,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A418EB2E2CA32D8200E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		A418EB542CA32FD100E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -975,7 +1007,7 @@
 				minimumVersion = 4.5.0;
 			};
 		};
-		A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		A418EB5A2CA32FE500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -983,7 +1015,7 @@
 				minimumVersion = 6.7.1;
 			};
 		};
-		A418EB392CA32D9B00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		A418EB5F2CA32FEC00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -994,29 +1026,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A418EB2F2CA32D8200E9A2B9 /* Alamofire */ = {
+		A418EB552CA32FD100E9A2B9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EB2E2CA32D8200E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = A418EB542CA32FD100E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		A418EB322CA32D8800E9A2B9 /* Lottie */ = {
+		A418EB582CA32FD900E9A2B9 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EB312CA32D8800E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = A418EB572CA32FD900E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		A418EB352CA32D9200E9A2B9 /* RxCocoa */ = {
+		A418EB5B2CA32FE500E9A2B9 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = A418EB5A2CA32FE500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		A418EB372CA32D9200E9A2B9 /* RxSwift */ = {
+		A418EB5D2CA32FE500E9A2B9 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = A418EB5A2CA32FE500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		A418EB3A2CA32D9B00E9A2B9 /* SnapKit */ = {
+		A418EB602CA32FEC00E9A2B9 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A418EB392CA32D9B00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = A418EB5F2CA32FEC00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */

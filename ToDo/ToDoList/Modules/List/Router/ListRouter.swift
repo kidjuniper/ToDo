@@ -8,8 +8,6 @@
 import Foundation
 
 protocol ListRouterProtocol {
-    static func createModule(data: [TaskModel],
-                             storageManager: StorageManagerProtocol) -> ListViewProtocol
     func presentAddingScreen(withData data: TaskModel,
                              withMode mode: AddingMode)
     
