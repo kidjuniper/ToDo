@@ -540,11 +540,11 @@
 			);
 			name = ToDo;
 			packageProductDependencies = (
-				A418EB552CA32FD100E9A2B9 /* Alamofire */,
-				A418EB582CA32FD900E9A2B9 /* Lottie */,
-				A418EB5B2CA32FE500E9A2B9 /* RxCocoa */,
-				A418EB5D2CA32FE500E9A2B9 /* RxSwift */,
-				A418EB602CA32FEC00E9A2B9 /* SnapKit */,
+				A418EB2F2CA32D8200E9A2B9 /* Alamofire */,
+				A418EB322CA32D8800E9A2B9 /* Lottie */,
+				A418EB352CA32D9200E9A2B9 /* RxCocoa */,
+				A418EB372CA32D9200E9A2B9 /* RxSwift */,
+				A418EB3A2CA32D9B00E9A2B9 /* SnapKit */,
 			);
 			productName = ToDo;
 			productReference = A418E8D32C98DD0900E9A2B9 /* ToDo.app */;
@@ -598,10 +598,10 @@
 			);
 			mainGroup = A418E8CA2C98DD0900E9A2B9;
 			packageReferences = (
-				A418EB542CA32FD100E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				A418EB572CA32FD900E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				A418EB5A2CA32FE500E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				A418EB5F2CA32FEC00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A418EB2E2CA32D8200E9A2B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A418EB312CA32D8800E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A418EB342CA32D9200E9A2B9 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A418EB392CA32D9B00E9A2B9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = A418E8D42C98DD0900E9A2B9 /* Products */;
 			projectDirPath = "";
@@ -999,7 +999,7 @@
 				minimumVersion = 5.9.1;
 			};
 		};
-		A418EB572CA32FD900E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		A418EB312CA32D8800E9A2B9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
