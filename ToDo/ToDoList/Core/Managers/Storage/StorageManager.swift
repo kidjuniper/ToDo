@@ -41,12 +41,15 @@ final class StorageManager: StorageManagerProtocol {
     
     // MARK: - Core Data Saving support
     private func saveContext() {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let error = error as NSError
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+        context.performAndWait {
+            if self.context.hasChanges {
+                do {
+                    try self.context.save()
+                } catch {
+                    context.rollback()
+                    let error = error as NSError
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
             }
         }
     }
